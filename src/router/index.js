@@ -1,7 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
 import HomePage from "@/components/HomePage";
+import HomepageM from "@/components/HomepageM";
 import Header from "@/components/Header";
+import HeaderM from "@/components/HeaderM";
 import Footer from "@/components/Footer";
 import FilterComp from "@/components/FilterComp";
 import ProductsComp from "@/components/ProductsComp";
@@ -16,6 +18,7 @@ import MerchantLogin from "@/components/MerchantLogin";
 import LoggedInHomePage from "@/components/LoggedInHomePage";
 import Cart from "@/components/Cart";
 import ProductDetails from "@/components/ProductDetails";
+import Products from "@/components/Products";
 
 Vue.use(Router);
 export default new Router({
@@ -25,6 +28,11 @@ export default new Router({
       path: "/",
       name: "HomePage",
       component: HomePage
+    },
+    {
+      path: "/homepagem",
+      name: "HomepageM",
+      component: HomepageM
     },
     {
       path: "/home",
@@ -40,6 +48,16 @@ export default new Router({
       path: "/header",
       name: "Header",
       component: Header
+    },
+    {
+      path: '/products',
+      name: 'Products',
+      component: Products
+    },
+    {
+      path: "/headerm",
+      name: "HeaderM",
+      component: HeaderM
     },
     {
       path: "/slider",

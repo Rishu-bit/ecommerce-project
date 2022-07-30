@@ -78,13 +78,14 @@
                     <!-- <input type="text" class="search-section" placeholder="search here.....">
                     <button id="buttonsearch">Search</button> -->
                     <input id="sear" v-model="searchText" type="text" name="search" placeholder="Search here...."/>
-                    <button id="buttonsearch">Search</button>
                 </div>
                 <div class="flex">
                      <div class="grid">
-                        <div v-for="(data, index) in productList" :key="index" :class="['card']">
+                        <div v-for="(data, index) in productList" :key="index">
                             <div v-if="data.category==='mobile'">
+                            <div class="card">
                                 <single-product-vue :product="data"></single-product-vue>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -121,8 +122,8 @@ import Footer from './Footer.vue'
 },
         beforeMount:function(){
             console.log("aygdjk");
-            var cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
-            this.cartCount = cartItems.length;
+            // var cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+            // this.cartCount = cartItems.length;
             this.$store.dispatch('actionToGetProductList',{
                 success: (res)=>{
                     console.log(res);
@@ -177,7 +178,7 @@ body{
 }
 #root{
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .brand{
     margin-left: 50px;
@@ -226,7 +227,7 @@ body{
     font-size: large; 
     left: 0px !important;
     margin-left: 0px !important;
-    margin-top: 45px;
+    margin-top: -4px;
     border-right: 3px solid whitesmoke;
     padding-left: 0px;
     background-color: #1F305E;
@@ -252,26 +253,28 @@ body{
     padding: 18px;
     display: flex;
     flex-wrap: wrap;
-    height: 680px;
+    height: 863px;
     overflow: scroll;
     border: 1px solid black;
     padding-right: 10px;
-    padding-bottom: 200px;
+    padding-bottom: 36px;
     margin-left: -135px;
+    padding-left: 60px;
 }
 #image{
-    height: 217px;
-    width: 195px;
+    height: 200px;
+    width: 167px;
 }
 .card{
-      padding: 10px; 
+    border: 1px solid black;
+    padding: 10px; 
     margin: 12px;
-     margin-left: 30px;  
+    margin-left: 30px;  
 }
 .searchbox {
     height: 50px;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 #sear {
     width: 600px;
@@ -287,5 +290,43 @@ body{
     height: 29px;
     padding-bottom: 4px;
     padding-top: 6px;
+}
+@media screen and (max-width: 1328px){
+    .grid {
+        padding-left: 28px;
+    }
+}
+@media screen and (max-width: 1289px){
+    .grid {
+        width: 87%;
+    }
+    #sear {
+        margin-left: -73px;
+    }
+}
+@media screen and (max-width: 1125px){
+    .grid {
+        padding-left: 70px;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1005px){
+    .grid {
+        padding-left: 59px;
+        width: 121%;
+    }
+    #sear {
+        width: 468px;
+    }
+}
+@media screen and (max-width: 924px){
+    .grid {
+        padding-left: 0px;
+    }
+}
+@media screen and (max-width: 1000px){
+    .brand,.camera,.ram,.price {
+        margin-left: -2px;
+    }
 }
 </style>

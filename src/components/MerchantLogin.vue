@@ -63,14 +63,14 @@ export default {
             event.preventDefault();
             console.log(this.posts);
             if (this.posts.name && this.posts.emailId && this.posts.password && this.posts.mobileNumber) {
-                axios.post("http://localhost:9090/merchant", this.posts, {
+                axios.post("http://10.20.4.157/merchant", this.posts, {
                     "Content-Type": "application/json; charset-UTF-8"
                 })
                     .then(response => {
                     console.log("response" + response);
                     if (response.data) {
                         alert("successfully registered");
-                        this.$router.push("/homepage");
+                        this.$router.push("/homepagem");
                     }
                     else {
                         alert("user already exists");
@@ -106,7 +106,7 @@ export default {
             var index = 0;
             console.log(this.log);
             if (this.log.emailId && this.log.password) {
-                fetch(`http://localhost:9090/merchant/login/${this.log.emailId}`)
+                fetch(`http://10.20.4.157:9090/merchant/login/${this.log.emailId}`)
                     .then(response => response.json())
                     .then(res => {
                     console.log(res);
@@ -116,7 +116,7 @@ export default {
                     }
                     else {
                         console.log("verified successfully!!!");
-                        this.$router.push("/homepage");
+                        this.$router.push("/homepagem");
                     }
                 });
             }
@@ -146,7 +146,6 @@ export default {
     components: { Header }
 }
 </script>
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');

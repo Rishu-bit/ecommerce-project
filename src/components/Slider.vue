@@ -72,7 +72,7 @@ export default {
 
 <style scoped>
 .slider-component {
-  height: 100vh;
+  height: 70vh;
   width: 100vw;
   margin-top: 20px;
 }
@@ -94,7 +94,7 @@ export default {
 }
 
 img {
-height:600px;
+height:542px;
 width:100%
 }
 
@@ -115,15 +115,22 @@ width:100%
 
 /* Position the "next button" to the right */
 .next {
+    margin-top: -100px;
   right: 0;
+  background-color: #1F305E;
+  color: white;
 }
 
 .prev {
+    margin-top: -100px;
   left: 0;
+  background-color: #1F305E;
+  color: white;
 }
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
+/* margin-top: -128px; */
   background-color: rgba(0,0,0,0.9);
 }
 </style>

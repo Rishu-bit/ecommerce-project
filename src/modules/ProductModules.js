@@ -19,7 +19,7 @@ export default {
                 'Content-Type':'application/json; charset=UTF-8'
             })
             .then(response=>{
-                //console.log(response)
+                console.log(response)
                 //console.log(response.data);
                 commit('setProductList',response.data)
                 success && success(response)

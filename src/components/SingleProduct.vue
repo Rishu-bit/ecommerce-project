@@ -2,16 +2,17 @@
     <div class="singleProduct">
         <div>
             <p @click="passToDetails">
-                <img id="image" :src="[product.thumbnail]" :alt="[product.brand]"/>
+                <img id="image" :src="[product.image]" :alt="[product.brand]"/>
 
             </p>
+            <div class="title">
+                <p style="font-weight: bolder;">Rs&nbsp;{{ product.price }}</p>
+                <p style="font-weight: bolder;">{{ product.brand }}</p>
+            </div>
             <div class="offerdiv">
-                <button class="offer">{{Math.ceil(product.discountPercentage)}} % offer</button>&nbsp; &nbsp;
+                <!-- <button class="offer">{{Math.ceil(product.discountPercentage)}} % offer</button>&nbsp; &nbsp; -->
                 <button class="add_to_cart" @click="addToCartHandler(product.id)"><i class="fa fa-shopping-cart"></i>
                     <span class="cartText">{{ isAddToCart ? 'Add to Cart' : 'Remove Cart' }}</span></button>
-            </div>
-            <div class="title">
-                <p style="font-weight: bolder;">{{ product.title }}</p>
             </div>
         </div>
     </div>
@@ -31,7 +32,6 @@ import ProductDetailsVue from './ProductDetails.vue'
     },
     data() {
         return {
-
             addToCart: [],
             isAddToCart: true,
         }
@@ -71,10 +71,11 @@ import ProductDetailsVue from './ProductDetails.vue'
         /* font-size: 15px; */
     }
     .offer{
-        background-color: rgb(189, 53, 76);
+        background-color: #1F305E;
     }
     .add_to_cart{
-        background-color: rgb(189, 53, 76);
+        color: white;
+        background-color: #1F305E;
     }
 
 </style>

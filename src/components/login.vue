@@ -75,7 +75,7 @@ export default {
             event.preventDefault();
             //console.log(this.posts);
             if (this.posts.name && this.posts.emailId && this.posts.password && this.posts.mobileNumber) {
-                axios.post("http://localhost:8080/user", this.posts, {
+                axios.post("http://10.20.4.157:8080/user", this.posts, {
                     "Content-Type": "application/json; charset-UTF-8"
                 })
                     .then(response => {
@@ -119,7 +119,7 @@ export default {
             var index = 0;
             console.log(this.log);
             if (this.log.emailId && this.log.password) {
-                fetch(`http://localhost:8080/user/login/${this.log.emailId}`)
+                fetch(`http://10.20.4.157:8080/user/login/${this.log.emailId}`)
                     .then(response => response.json())
                     .then(res => {
                     console.log(res);

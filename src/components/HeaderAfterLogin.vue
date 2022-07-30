@@ -1,36 +1,23 @@
 <template>
   <div class="header-component">
-    <router-link to="/"><span class="logo"></span></router-link>
-    <!-- <input type="text" class="search-section" placeholder="search here....."> -->
+    <router-link to="/"><span class="logo">logo</span></router-link>
     <div class="header-nav">
-      <router-link to="/" class="a-link">Logout</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <router-link to="/cart" class="cart-link">Cart<sup class="cartcount">{{this.cartCount}}</sup></router-link>&nbsp;&nbsp;&nbsp;
+      <!-- <router-link to="/add-new-product" class="a-link">Add New Product</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+      <router-link to="/signin" class="a-link">Logout</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <!-- <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+      <router-link to="/cart" class="a-link">Order History</router-link>&nbsp;&nbsp;&nbsp;
     </div>
   </div>
 </template>
 
 <script>
-/* eslint-disable */
 export default {
   name: 'Header',
   data () {
     return {
-      cartItems:[],
-      cartCount:0
+      
     }
-  },
-  components :{
-
-  },
-    beforeMount: function(){
-            var cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
-            this.cartCount = cartItems.length;
-     },
-    // mounted:function(){
-    //     var cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]")
-    //     this.cartItems=cartItems
-    // }
+  }
 }
 </script>
 
@@ -86,15 +73,13 @@ export default {
     background-color: white;
     color: #1F305E;
     border: 1px solid black;
-    border-top-left-radius: 6px;
   }
-  .cart-link {
-    margin-top: -4px;
+  @media screen and (max-width: 280px){
+    .logo {
+      margin-left: 2px;
+    }
+    .header-nav {
+      padding-right: 0px;
+    }
   }
-  .cartcount{
-    color: #1F305E;
-    background-color: white;
-    padding: 2px 6px;
-    border-radius:49px ;
-}
 </style>

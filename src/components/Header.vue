@@ -1,7 +1,7 @@
 <template>
   <div class="header-component">
     <span class="logo"></span>
-    <input type="text" class="search-section" placeholder="search here.....">
+    <!-- <input type="text" class="search-section" placeholder="search here....."> -->
     <div class="header-nav">
       <router-link to="/login" class="a-link">Login</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
