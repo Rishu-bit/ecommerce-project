@@ -1,7 +1,7 @@
 <template>
 <div>
 <div class="header-component">
-    <router-link to="/"><span class="logo"><img src="../assets/logo.jpg" alt="" class="logo-image"></span></router-link>
+    <router-link to="/"><span class="logo"></span></router-link>
     <div class="header-nav">
       <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <router-link to="/cart" class="a-link">Cart</router-link>&nbsp;&nbsp;&nbsp;

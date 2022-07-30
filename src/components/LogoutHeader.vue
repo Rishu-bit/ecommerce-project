@@ -1,6 +1,6 @@
 <template>
   <div class="header-component">
-    <router-link to="/"><span class="logo"><img src="../assets/logo.jpg" alt="" class="logo-image"></span></router-link>
+    <router-link to="/"><span class="logo"></span></router-link>
     <!-- <input type="text" class="search-section" placeholder="search here....."> -->
     <div class="header-nav">
       <router-link to="/" class="a-link">Logout</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
