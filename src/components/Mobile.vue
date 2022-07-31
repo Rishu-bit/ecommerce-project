@@ -78,7 +78,7 @@
                     <!-- <input type="text" class="search-section" placeholder="search here.....">
                     <button id="buttonsearch">Search</button> -->
                     <input id="sear" v-model="searchText" type="text" name="search" placeholder="Search here...."/>
-                    <button>search Now</button>
+                    <!-- <button>search Now</button> -->
                 </div>
                 <div class="flex">
                      <div class="grid">

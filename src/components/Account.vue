@@ -5,16 +5,16 @@
       <div class="sidebar">
         <div @click="aboutmerchant">About</div>
         <div @click="contactus">Contact Us</div>
-        <div @click="signout">Sign Out</div>
+        <div @click="signout">Log Out</div>
       </div>
       <div class="rightcontainer">
         <div v-if="showRight === 'About'" class="about">
         <div class="content">
           <h2><b>About</b></h2>
-          <p>Name:</p>
-          <p>Email Id:</p>
-          <p>Phone Number:</p>
-          <p>Merchant Id:</p>
+          <p>Name: {{this.name}}</p>
+          <p>Email Id: {{this.emailId}}</p>
+          <p>Phone Number: {{this.mobileNumber}}</p>
+          <p>Merchant Id: {{this.merchantId}}</p>
         </div>
         </div>
         <div v-if="showRight === 'Contact'" class="about">
@@ -37,14 +37,23 @@
   </div>
 </template>
 <script>
+import {mapGetters} from 'vuex'
 import HeaderM from './HeaderM.vue'
 import Footer from './Footer.vue'
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios,axios)
 export default {
   name: 'Account',
   data () {
     return {
       showRight: 'About',
-      msg: 'Welcome to HomePage'
+      msg: 'Welcome to HomePage',
+      name:'',
+      emailId:'',
+      mobileNumber:'',
+      merchantId:0  
     }
   },
   methods: {
@@ -61,8 +70,24 @@ export default {
       this.showRight = 'Sign Out'
     },
     logout () {
-      this.$router.push('/Signin')
+      this.$router.push('/mlogin')
     }
+  },
+  computed:{
+            ...mapGetters(['getMerchant'])
+        },
+  beforeMount:function(){
+        this.merchantId=this.getMerchant
+        axios.get(`http://10.20.4.157:9090/merchant/${this.merchantId}`)
+        .then(response=>{
+            console.log(response);
+            this.name=response.data.name
+            this.emailId=response.data.emailId
+            this.mobileNumber=response.data.mobileNumber
+
+        })
+        .catch(err=>console.log(err))
+
   },
   components: {
     HeaderM,

@@ -74,6 +74,6 @@ export default {
     background-color: white;
     color: #1F305E;
     border: 1px solid black;
-    border-top-left-radius: 6px;
+    /* border-top-left-radius: 6px; */
   }
 </style>

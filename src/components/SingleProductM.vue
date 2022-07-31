@@ -7,8 +7,8 @@
             </p>
             <div class="offerdiv">
                 <button class="offer">{{Math.ceil(product.price)}}</button>&nbsp; &nbsp;
-                <button class="add_to_cart" @click="addToCartHandler(product.id)"><i class="fa fa-shopping-cart"></i>
-                    <span class="cartText">{{ isAddToCart ? 'Add to Cart' : 'Remove Cart' }}</span></button>
+                <!-- <button class="add_to_cart" @click="addToCartHandler(product.id)"><i class="fa fa-shopping-cart"></i> -->
+                    <!-- <span class="cartText">{{ isAddToCart ? 'Add to Cart' : 'Remove Cart' }}</span></button> -->
             </div>
             <div class="title">
                 <p style="font-weight: bolder;">{{ product.brand }}</p>

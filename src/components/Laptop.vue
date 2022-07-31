@@ -104,6 +104,7 @@ import Footer from './Footer.vue'
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+Vue.use(VueAxios,axios)
 
 /* eslint-disable */
     export default{

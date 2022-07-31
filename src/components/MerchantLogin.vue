@@ -66,7 +66,8 @@ export default {
             log: {
                 emailId: "",
                 password: ""
-            }
+            },
+			id:-1
         };
     },
     methods: {
@@ -81,10 +82,12 @@ export default {
                     console.log("response" + response);
                     if (response.data) {
                         alert("successfully registered");
+						this.id=response.data.id
+						this.$store.commit('setMerchant',this.id)
                         this.$router.push("/homepagem");
                     }
                     else {
-                        alert("user already exists");
+                        alert("merchant already exists");
                         return;
                     }
                 })
@@ -127,6 +130,8 @@ export default {
                     }
                     else {
                         console.log("verified successfully!!!");
+						this.id=res.id
+						this.$store.commit('setMerchant',this.id)
                         this.$router.push("/homepagem");
                     }
                 });

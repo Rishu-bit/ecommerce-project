@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="header-component">
-    <router-link to="/"><span class="logo">logo</span></router-link>
+    <router-link to="/"><span class="logo">ElectroBay</span></router-link>
     <div class="header-nav">
       <router-link to="/add" class="a-link">Add New Product</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <router-link to="/account" class="a-link">Account</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -9,7 +9,6 @@
       <!-- <router-link to="/cart" class="a-link">Order History</router-link>&nbsp;&nbsp;&nbsp; -->
     </div>
   </div>
-  <input class="searchin" type="text" placeholder="search here..." v-model="searchText"><br/>
 
 </div>
 </template>
@@ -21,6 +20,18 @@ export default {
     return {
       msg: 'This is header Component'
     }
+  },
+  watch: {
+    searchText:function(val){
+                //this.productList=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
+                console.log(val,"search");
+                axios.get('http://10.20.4.166:8081/findBySearch/'+val)
+                .then((res)=>{
+                    this.productList=res.data
+                    // console.log("hello",res)
+                })
+                .catch(err=>console.log(err))
+            },
   }
 }
 </script>
@@ -79,6 +90,7 @@ export default {
     border: 1px solid black;
   }
   .searchin {
+    color: black;
     margin-top: 20px;
     width: 50%;
     margin-right: 50px;
