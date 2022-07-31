@@ -98,6 +98,9 @@ import {mapGetters} from 'vuex'
 import SingleProductVue from './SingleProduct.vue'
 import LogoutHeader from './LogoutHeader.vue'
 import Footer from './Footer.vue'
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 /* eslint-disable */
     export default{
@@ -135,7 +138,14 @@ import Footer from './Footer.vue'
         },
         watch:{
             searchText:function(val){
-                this.productList=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
+                //this.productList=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
+                console.log(val,"search");
+                axios.get('http://10.20.4.166:8081/findBySearch/'+val)
+                .then((res)=>{
+                    this.productList=res.data
+                    // console.log("hello",res)
+                })
+                .catch(err=>console.log(err))
             },
             checkBoxes:function(val){
                 console.log(val);
@@ -225,7 +235,7 @@ body{
     font-size: large; 
     left: 0px !important;
     margin-left: 0px !important;
-    margin-top: -4px;
+    margin-top: -9px;
     border-right: 3px solid whitesmoke;
     padding-left: 0px;
     background-color: #1F305E;

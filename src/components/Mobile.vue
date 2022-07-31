@@ -78,6 +78,7 @@
                     <!-- <input type="text" class="search-section" placeholder="search here.....">
                     <button id="buttonsearch">Search</button> -->
                     <input id="sear" v-model="searchText" type="text" name="search" placeholder="Search here...."/>
+                    <button>search Now</button>
                 </div>
                 <div class="flex">
                      <div class="grid">
@@ -100,7 +101,10 @@ import {mapGetters} from 'vuex'
 import SingleProductVue from './SingleProduct.vue'
 import LogoutHeader from './LogoutHeader.vue'
 import Footer from './Footer.vue'
-
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios,axios)
 /* eslint-disable */
     export default{
         name:'Mobile',
@@ -126,7 +130,7 @@ import Footer from './Footer.vue'
             // this.cartCount = cartItems.length;
             this.$store.dispatch('actionToGetProductList',{
                 success: (res)=>{
-                    console.log(res);
+                    // console.log("respioinse",res);
                     //this.productList = res.products
                     this.productList= res.data;
                 }
@@ -137,7 +141,14 @@ import Footer from './Footer.vue'
         },
         watch:{
             searchText:function(val){
-                this.productList=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
+                //this.productList=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
+                console.log(val,"search");
+                axios.get('http://10.20.4.166:8081/findBySearch/'+val)
+                .then((res)=>{
+                    this.productList=res.data
+                    // console.log("hello",res)
+                })
+                .catch(err=>console.log(err))
             },
             checkBoxes:function(val){
                 console.log(val);
@@ -227,7 +238,7 @@ body{
     font-size: large; 
     left: 0px !important;
     margin-left: 0px !important;
-    margin-top: -4px;
+    margin-top: -9px;
     border-right: 3px solid whitesmoke;
     padding-left: 0px;
     background-color: #1F305E;
@@ -328,5 +339,8 @@ body{
     .brand,.camera,.ram,.price {
         margin-left: -2px;
     }
+}
+@media screen and (max-width: 863px){
+
 }
 </style>

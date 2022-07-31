@@ -8,13 +8,13 @@
                 </nav>
             </header>
         <div style="margin-top:100px">
-            <img id="image" :src="[cartItems.images[0]]" alt="[cartItems.title]"/>
+            <img id="image" :src="[cartItems.image]" alt="[cartItems.title]"/>
         </div>
         <div>
-            <h2 style="font-weight: bolder;"> {{cartItems.title}}</h2>
-            <h3 style="font-weight: bolder;">Description: {{cartItems.description}}</h3>
-            <h3 style="font-weight: bolder;">Price: {{cartItems.price}}</h3>
-            <h3 style="font-weight: bolder;">Rating: {{cartItems.rating}}</h3>
+            <h2 style="font-weight: bolder;"> {{cartItems.brand}}</h2>
+            <h3 style="font-weight: bolder;">Category: {{cartItems.category}}</h3>
+            <h3 style="font-weight: bolder;">Price: Rs {{cartItems.price}}</h3>
+            <!-- <h3 style="font-weight: bolder;">Rating: {{cartItems.rating}}</h3> -->
         </div>
     </div>
 </template>

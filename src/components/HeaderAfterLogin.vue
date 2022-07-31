@@ -5,7 +5,7 @@
       <!-- <router-link to="/add-new-product" class="a-link">Add New Product</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
       <router-link to="/signin" class="a-link">Logout</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <!-- <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-      <router-link to="/cart" class="a-link">Order History</router-link>&nbsp;&nbsp;&nbsp;
+      <router-link to="/account" class="a-link">Account</router-link>&nbsp;&nbsp;&nbsp;
     </div>
   </div>
 </template>

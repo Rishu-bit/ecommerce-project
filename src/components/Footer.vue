@@ -1,6 +1,6 @@
 <template>
   <div class="footer-component">
-    <span class="copyright">&copy;2022 ElectronicBay. &nbsp;&nbsp;&nbsp;&nbsp;All rights reserved </span>
+    <span class="copyright">&copy;2022 ElectroBay. &nbsp;&nbsp;&nbsp;&nbsp;All rights reserved </span>
     <div class="footer-nav">
       <router-link to="/about" class="a-link">About</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <router-link to="/contact" class="a-link">Contact-Us</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -26,8 +26,8 @@ export default {
     color: white;
   }
   .footer-component {
-    position: absolute;
-    margin-bottom: 0;
+    position: fixed;
+    bottom: 0;
     left: 0;
     right: 0;
     border: 1px solid black;

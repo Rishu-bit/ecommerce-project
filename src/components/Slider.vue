@@ -43,6 +43,9 @@ export default {
         }
       },
       prev: function () {
+        if(this.currentIndex < 1){
+          this.currentIndex=this.images.length
+        }
         this.currentIndex -= 1
       },
       clickHandler (j) {

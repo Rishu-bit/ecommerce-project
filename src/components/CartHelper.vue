@@ -11,7 +11,7 @@
                 <p> <b>Price : </b> ₹ {{ product.price }}.00 </p>
                 <!-- <p> <b>Stock : </b> {{ product.stock }} </p> -->
 
-                <span><button class="buynow"><i class="fa fa-shopping-cart"></i> Buy Now</button> </span>
+                <span><button class="buynow" @click="pushtoorderdb"><i class="fa fa-shopping-cart"></i> Buy Now</button> </span>
                 <span><button class="delete" @click="removeCart"><i class="fa fa-trash"></i> Remove</button> </span>
             </div>
         </div>
@@ -19,12 +19,24 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios,axios)
+import { mapGetters } from 'vuex'
+
 /* eslint-disable */ 
     export default{
         name:'CartHelper',
         data(){
             return{
-
+                posts:{
+                    userId:this.getUser,
+                    productId:this.product.id,
+                    quantity:0,
+                    merchantId:this.getMerchant,
+                    cartId:[]
+                }
             }
         },
         props:{
@@ -36,12 +48,47 @@
                 required:false
             }
         },
+        computed:{
+            ...mapGetters(['getUser','getMerchant'])
+        },  
         methods:{
             removeCart(){
-                var cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]")
-                cartItems=cartItems.filter((data)=>data.id!==this.product.id)
-                localStorage.setItem("cartItems",JSON.stringify(cartItems))
+                // var cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]")
+                // cartItems=cartItems.filter((data)=>data.id!==this.product.id)
+                // localStorage.setItem("cartItems",JSON.stringify(cartItems))
+                console.log(this.product.id);
+                axios.delete(`http://10.20.4.110:9090/cart/product/${this.product.id}/${this.getUser}`)
+                .catch(err=>console.log(err))
+            },
+            pushtoorderdb(){
+                console.log(this.posts+"db");
+                console.log(this.posts.merchantId);
+                axios.post("http://10.20.4.110:9094/order", this.posts, {
+                    "Content-Type": "application/json; charset-UTF-8",
+                    mode:'no-cors'
+                })
+                // axios.post("http://10.20.4.110:9094/order",this.posts,{
+                //     mode:'no-cors'
+                // })
+                .then(response=>console.log(response))
+                .catch(err=>console.log(err))
             }
+
+        },
+        beforeMount:function(){
+            this.posts.userId=this.getUser,
+            console.log(this.posts.userId);
+            axios.get(`http://10.20.4.110:9090/cart/user/${this.getUser}`)
+            .then(response=>{
+                for(let i=0;i<response.data.length;i++){
+                    console.log(response.data[i].id);
+                    this.posts.cartId.push(response.data[i].id)
+                }
+            })
+
+            axios.get(`http://10.20.4.110:8080/product/${this.posts.productId}`)
+            .then(response=>this.posts.merchantId=response.data.merchantId)
+
         }
 
     }
@@ -52,7 +99,7 @@
     padding: 10px;
     outline: none;
     width: 200px;
-    background-color: rgb(221, 63, 63);
+    background-color: #1F305E;
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -65,9 +112,9 @@
     border: 2px solid rgb(74, 69, 69);
 }
 .delete:hover{
-    background-color: rgb(221, 63, 63);
+    background-color: #1F305E;
     color: rgb(255, 254, 254);
-    border: 2px solid rgb(221, 63, 63);
+    border: 2px solid #1F305E;
 }
 .delete {
     padding: 10px;
@@ -83,7 +130,7 @@
 
 .img {
     width: 100%;
-    height: 300px;
+    height: 190px;
     /* object-fit: cover; */
     padding: 10px;
     border-radius: 15px;

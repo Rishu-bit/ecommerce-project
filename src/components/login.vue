@@ -1,7 +1,7 @@
 <template>
 <div>
 <div class="header-component">
-    <router-link to="/"><span class="logo"></span></router-link>
+    <router-link to="/"><span class="logo">ElectroBay</span></router-link>
     <div class="header-nav">
       <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <router-link to="/cart" class="a-link">Cart</router-link>&nbsp;&nbsp;&nbsp;
@@ -83,7 +83,8 @@ export default {
                     if (response.data) {
                         alert("successfully registered");
                         this.id=response.data.id
-                        this.$router.push("/home");
+                        this.$store.commit('setUser',this.id)
+                        this.$router.push("/homel");
                     }
                     else {
                         alert("user already exists");
@@ -131,8 +132,9 @@ export default {
                         console.log("verified successfully!!!");
 						isLoggedIn : true
                         this.id=res.id
+                        this.$store.commit('setUser',this.id)
                         console.log(this.id);
-                        this.$router.push("/");
+                        this.$router.push("/homel");
                     }
                 });
             }
@@ -179,7 +181,7 @@ export default {
     left: 0;
     right: 0;
     border: 1px solid black;
-    height: 57px;
+    height: 51px;
     padding-top: 15px;
     background-color: #1F305E;
     color: white;
@@ -192,8 +194,9 @@ export default {
     color: white;
   }
   .logo {
+    font-size: 16px;
     float: left;
-    margin-left: 30px;
+    margin-left: 10px;
     height: 30px;
     width: 30px;
   }

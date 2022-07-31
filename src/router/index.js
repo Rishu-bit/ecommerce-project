@@ -18,7 +18,10 @@ import MerchantLogin from "@/components/MerchantLogin";
 import LoggedInHomePage from "@/components/LoggedInHomePage";
 import Cart from "@/components/Cart";
 import ProductDetails from "@/components/ProductDetails";
-import Products from "@/components/Products";
+import AddNewProduct from "@/components/AddNewProduct"
+import Order from '@/components/Order'
+import Account from '@/components/Account'
+import BeforeLoginCartH from '@/components/BeforeLoginCartH'
 
 Vue.use(Router);
 export default new Router({
@@ -35,7 +38,7 @@ export default new Router({
       component: HomepageM
     },
     {
-      path: "/home",
+      path: "/homel",
       name: "LoggedInHomePage",
       component: LoggedInHomePage
     },
@@ -48,11 +51,6 @@ export default new Router({
       path: "/header",
       name: "Header",
       component: Header
-    },
-    {
-      path: '/products',
-      name: 'Products',
-      component: Products
     },
     {
       path: "/headerm",
@@ -123,6 +121,26 @@ export default new Router({
       path: "/products/:id",
       name: "ProductDetails",
       component: ProductDetails
+    },
+    {
+      path: "/add",
+      name: "AddNewProduct",
+      component: AddNewProduct
+    },
+    {
+      path: "/order",
+      name: "Order",
+      component: Order
+    },
+    {
+      path: "/account",
+      name: "Account",
+      component: Account
+    },
+    {
+      path: "/beforecarth",
+      name: "BeforeLoginCartH",
+      component: BeforeLoginCartH
     }
     // {
     //   path: '/products',

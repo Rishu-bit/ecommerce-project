@@ -1,45 +1,33 @@
 <template>
+<div>
   <div class="header-component">
-    <span class="logo"><router-link to="/" class="a-link">ElectroBay</router-link></span>
+    <span class="logo"><router-link to="/">ElectroBay</router-link></span>
     <!-- <input type="text" class="search-section" placeholder="search here....."> -->
     <div class="header-nav">
-      <router-link to="/" class="a-link">Logout</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <router-link to="/login" class="a-link">Login</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <router-link to="/cart" class="cart-link">Cart<sup class="cartcount">{{this.cartCount}}</sup></router-link>&nbsp;&nbsp;&nbsp;
+      <!-- <router-link to="/BeforeLoginCartH" class="a-link">Cart</router-link>&nbsp;&nbsp;&nbsp; -->
     </div>
   </div>
+      <h3 class="textcart"> <i class="fa fa-info-circle"></i>Missing Cart Items..?</h3>
+      <h4 class="textcart-01">Login to see the items you added previously</h4>
+      <router-link to="/login" class="p-button">Login</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <Footer></Footer>
+</div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-Vue.use(VueAxios,axios)
-/* eslint-disable */
+import Footer from './Footer.vue'
 export default {
   name: 'Header',
   data () {
     return {
-      cartItems:[],
-      cartCount:0
+      msg: 'This is header Component'
     }
   },
-  components :{
-
-  },
-    beforeMount: function(){
-      console.log(this.getUser)
-            axios.get(`http://10.20.4.110:9090/cart/user/${this.getUser}`)
-          .then(response=>this.cartCount=response.data.length)
-     },
-     computed:{
-            ...mapGetters(['getUser','getMerchant'])
-        },
-    // mounted:function(){
-    //     var cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]")
-    //     this.cartItems=cartItems
-    // }
+  components: {
+    Footer
+  }
 }
 </script>
 
@@ -65,7 +53,7 @@ export default {
   }
   .logo {
     float: left;
-    margin-left: 30px;
+    margin-left: 10px;
     height: 30px;
     width: 30px;
   }
@@ -91,23 +79,32 @@ export default {
     float: right;
     padding-right: 30px;
   }
-  .a-link {
-    font-size: 16px;
-  }
+  
   .a-link:hover {
     background-color: white;
     color: #1F305E;
     border: 1px solid black;
     border-top-left-radius: 6px;
   }
-  .cart-link {
-    margin-top: -4px;
-    font-size: 16px;
-  }
-  .cartcount{
+  .textcart {
+    padding-top: 150px;
     color: #1F305E;
-    background-color: white;
-    padding: 2px 6px;
-    border-radius:49px ;
-}
+  }
+  .textcart-01 {
+    color: #1F305E;
+    padding-top: 100px;
+  }
+  .p-button {
+    height: 40px;
+    width: 100px;
+    border: 1px solid black;
+    color: white;
+    background-color: #1F305E;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .p-button:hover {
+    border-radius: 5px;
+  }
 </style>

@@ -1,13 +1,17 @@
 <template>
+<div>
   <div class="header-component">
     <router-link to="/"><span class="logo">logo</span></router-link>
     <div class="header-nav">
-      <router-link to="/add-new-product" class="a-link">Add New Product</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <router-link to="/signin" class="a-link">Logout</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <router-link to="/add" class="a-link">Add New Product</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <router-link to="/account" class="a-link">Account</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <!-- <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-      <router-link to="/cart" class="a-link">Order History</router-link>&nbsp;&nbsp;&nbsp;
+      <!-- <router-link to="/cart" class="a-link">Order History</router-link>&nbsp;&nbsp;&nbsp; -->
     </div>
   </div>
+  <input class="searchin" type="text" placeholder="search here..." v-model="searchText"><br/>
+
+</div>
 </template>
 
 <script>
@@ -32,7 +36,7 @@ export default {
     left: 0;
     right: 0;
     border: 1px solid black;
-    height: 40px;
+    height: 34px;
     padding-top: 15px;
     background-color: #1F305E;
     color: white;
@@ -74,4 +78,20 @@ export default {
     color: #1F305E;
     border: 1px solid black;
   }
+  .searchin {
+    margin-top: 20px;
+    width: 50%;
+    margin-right: 50px;
+    height: 30px;
+    border-radius: 5px;
+    margin-left: 48px;
+    position: fixed;
+    text-align: left;
+    margin-left: -393px;
+}
+@media screen and (max-width: 960px){
+  .searchin{
+  margin-left: -278px;
+  }
+}
 </style>

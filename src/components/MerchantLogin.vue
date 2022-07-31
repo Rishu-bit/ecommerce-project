@@ -1,6 +1,14 @@
 <template>
 <div>
-  <Header></Header>
+<div class="header-component">
+    <router-link to="/"><span class="logo">ElectroBay</span></router-link>
+    <div class="header-nav">
+      <router-link to="/login" class="a-link">Login User</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <!-- <router-link to="/signin" class="a-link">Logout</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+      <!-- <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+      <!-- <router-link to="/cart" class="a-link">Order History</router-link>&nbsp;&nbsp;&nbsp; -->
+    </div>
+</div>
 <div class="container" id="container">
 <div class="form-container sign-up-container">
 <form>
@@ -14,7 +22,7 @@
 </div>
 <div class="form-container sign-in-container">
 <form>
-<h1>Sign in</h1>
+<h1 id="signin">Sign in</h1>
 <input type="email" name="emailId" v-model="log.emailId" placeholder="Email" />
 <input type="password" name="password" v-model="log.password" placeholder="Password" />
 <button @click="login">Sign In</button>
@@ -27,12 +35,14 @@
 <button class="ghost" id="signIn" @click="change">Back</button>
 </div>
 <div class="overlay-panel overlay-right">
-<h1>New User!</h1>
+<h1>New Merchant!</h1>
 <button class="ghost" id="signUp" @click="change">Register</button>
 </div>
 </div>
 </div>
 </div>
+<Footer></Footer>
+
 </div>
 </template>
 
@@ -41,7 +51,8 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import Header from './Header.vue'
+// import Header from './Header.vue'
+import Footer from './Footer.vue'
 Vue.use(VueAxios,axios)
 export default {
     data: () => {
@@ -63,7 +74,7 @@ export default {
             event.preventDefault();
             console.log(this.posts);
             if (this.posts.name && this.posts.emailId && this.posts.password && this.posts.mobileNumber) {
-                axios.post("http://10.20.4.157/merchant", this.posts, {
+                axios.post("http://10.20.4.157:9090/merchant", this.posts, {
                     "Content-Type": "application/json; charset-UTF-8"
                 })
                     .then(response => {
@@ -143,7 +154,7 @@ export default {
             });
         }
     },
-    components: { Header }
+    components: { Footer }
 }
 </script>
 
@@ -152,7 +163,65 @@ export default {
 
 * {
 	box-sizing: border-box;
+	text-decoration: none;
+    color: white;
 }
+
+  .header-component {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border: 1px solid black;
+    height: 50px;
+    padding-top: 15px;
+    background-color: #1F305E;
+    color: white;
+  }
+  button {
+    background-color: #1F305E;
+    color: white;
+  }
+  .logo {
+	font-size: 16px;
+    float: left;
+    margin-left: 10px;
+    height: 30px;
+    width: 30px;
+  }
+  .logo-image {
+    height: 35px;
+    width: 50px;
+    border-radius: 8px;
+    margin-top: -4px
+  }
+  .search-section {
+    width: 600px;
+    margin-left: 120px;
+    margin-right: 20px;
+    color: black;
+    height: 25px;
+    padding-top: 4px;
+    border: none;
+    border-radius: 5px;
+  }
+  .header-nav {
+	margin-top: -14px;
+    display: flex;
+    flex-direction: row;
+    float: right;
+    padding-right: 30px;
+  }
+  .a-link {
+	font-size: 16px;
+	color: white;
+	background-color: #1F305E;
+  }
+  .a-link:hover {
+    background-color: white;
+    color: #1F305E;
+    border: 1px solid black;
+  }
 
 body {
 	background: #f6f5f7;
@@ -166,6 +235,7 @@ body {
 }
 
 h1 {
+	color: white;
 	font-weight: bold;
 	margin: 0;
 }
@@ -231,6 +301,7 @@ form {
 }
 
 input {
+	color: black;
 	background-color: #eee;
 	border: none;
 	padding: 12px 15px;
@@ -247,7 +318,10 @@ input {
 	overflow: hidden;
 	/* width: 768px; */
 	max-width: 100%;
-	min-height: 480px;
+	min-height: 553px;
+    margin-top: 90px;
+    margin-bottom: 120px;
+	/* margin-left: 180px; */
 }
 
 .form-container {
@@ -401,5 +475,8 @@ footer i {
 footer a {
 	color: #3c97bf;
 	text-decoration: none;
+}
+#signin {
+	color: #1F305E;
 }
 </style>

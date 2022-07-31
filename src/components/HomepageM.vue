@@ -1,13 +1,14 @@
 <template>
   <div class="hello">
     <HeaderM></HeaderM>
-    <Products></Products>
+    <!-- <Products></Products> -->
+      
     <Footer></Footer>
   </div>
 </template>
 <script>
 import HeaderM from './HeaderM.vue'
-import Products from './Products.vue'
+// import Products from './Products.vue'
 import Footer from './Footer.vue'
 import HeaderAfterLogin from './HeaderAfterLogin.vue'
 export default {
@@ -19,10 +20,9 @@ export default {
   },
   components: {
     HeaderM,
-    Products,
     Footer,
     HeaderAfterLogin
-}
+  }
 }
 </script>
 <style scoped>

@@ -1,11 +1,11 @@
 <template>
   <div class="header-component">
-    <span class="logo"></span>
+    <span class="logo"><router-link to="/">ElectroBay</router-link></span>
     <!-- <input type="text" class="search-section" placeholder="search here....."> -->
     <div class="header-nav">
       <router-link to="/login" class="a-link">Login</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <router-link to="/cart" class="a-link">Cart</router-link>&nbsp;&nbsp;&nbsp;
+      <router-link to="/beforecarth" class="a-link">Cart</router-link>&nbsp;&nbsp;&nbsp;
     </div>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
     left: 0;
     right: 0;
     border: 1px solid black;
-    height: 40px;
+    height: 34px;
     padding-top: 15px;
     background-color: #1F305E;
     color: white;
@@ -43,7 +43,7 @@ export default {
   }
   .logo {
     float: left;
-    margin-left: 30px;
+    margin-left: 10px;
     height: 30px;
     width: 30px;
   }
@@ -69,6 +69,7 @@ export default {
     float: right;
     padding-right: 30px;
   }
+  
   .a-link:hover {
     background-color: white;
     color: #1F305E;

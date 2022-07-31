@@ -1,26 +1,24 @@
 <template>
     <div>
         <LogoutHeader></LogoutHeader>
-            <h1>Welcome to cart {{this.getUser}}</h1>
+            <h1>Welcome to Order history</h1>
             <div
             v-for="(data,index) in cartItems"
             :key="index"
             :class="['cart']"
             v-if="cartItems.length!=0"
             >
-                <cart-helper-vue :product="data"></cart-helper-vue>
+                <OrderHelper :product="data"></OrderHelper>
             </div>
             <div class="cartempty" v-if="cartItems.length==0">
-                    <h3 class="textcart"> <i class="fa fa-info-circle"></i> Your Cart is Empty!</h3>
+                    <h3 class="textcart"> <i class="fa fa-info-circle"></i> You have not ordered anything yet!</h3>
             </div>
-            <button @click="orderpage"> Order History </button>
         <Footer></Footer>
     </div>
 </template>
 
 <script>
 /* eslint-disable */ 
-    import CartHelperVue from './CartHelper.vue'
     import LogoutHeader from './LogoutHeader.vue'
     import Footer from './Footer.vue'
 import Vue from 'vue'
@@ -28,6 +26,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.use(VueAxios,axios)
 import { mapGetters } from 'vuex'
+import OrderHelper from './OrderHelper.vue'
     export default{
         name:'Cart',
          
@@ -41,23 +40,18 @@ import { mapGetters } from 'vuex'
             }
         },
         components:{
-            CartHelperVue,
-            LogoutHeader,
-            Footer
-        },
+    LogoutHeader,
+    Footer,
+    OrderHelper
+},
         methods:{
-            orderpage() {
-                this.$router.push('/order')
-            }
 
         },
         beforeMount: function(){
-            console.log("inside before mount")
             // var cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
             // this.cartCount = cartItems.length;
-            axios.get(`http://10.20.4.110:9090/cart/user/${this.getUser}`)
+            axios.get(`http://10.20.4.110:9094/order/user/${this.getUser}`)
             .then(response=>{
-                console.log(this.getUser);
                 this.products=response.data;
                 //console.log(this.products[0].productId,"productsssss");
                 console.log(this.products.length);
@@ -85,6 +79,8 @@ import { mapGetters } from 'vuex'
                     }
                 }
             })
+            
+
         },
         mounted:function(){
             // var cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]")
@@ -129,9 +125,5 @@ footer{
 h1{
     text-align: center;
     margin-top: 15vh;
-}
-button {
-    height: 50px;
-    width: 50px;
 }
 </style>
