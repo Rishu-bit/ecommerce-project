@@ -3,14 +3,14 @@
         <LogoutHeader></LogoutHeader>
             <h1>Welcome to Order history</h1>
             <div
-            v-for="(data,index) in cartItems"
+            v-for="(data,index) in productList"
             :key="index"
             :class="['cart']"
-            v-if="cartItems.length!=0"
+            v-if="productList.length!=0"
             >
                 <OrderHelper :product="data"></OrderHelper>
             </div>
-            <div class="cartempty" v-if="cartItems.length==0">
+            <div class="cartempty" v-if="productList.length==0">
                     <h3 class="textcart"> <i class="fa fa-info-circle"></i> You have not ordered anything yet!</h3>
             </div>
         <Footer></Footer>
@@ -36,8 +36,12 @@ import OrderHelper from './OrderHelper.vue'
                 cartCount:0,
                 cartItems:[],
                 productId:[],
-                index:0
+                index:0,
+                productList:[]
             }
+        },
+        computed:{
+            ...mapGetters(['actionToGetProductList','getProductList'])
         },
         components:{
     LogoutHeader,
@@ -52,37 +56,86 @@ import OrderHelper from './OrderHelper.vue'
             // this.cartCount = cartItems.length;
             axios.get(`http://10.20.4.110:9094/order/user/${this.getUser}`)
             .then(response=>{
-                this.products=response.data;
+                //this.products=response.data;
+                console.log(response);
+                this.productId=response.data[0].productId 
                 //console.log(this.products[0].productId,"productsssss");
-                console.log(this.products.length);
-                for(let i=0;i<this.products.length;i++){
-                    this.productId.push(this.products[i].productId)
-                }
-                console.log(this.productId);
+                // console.log(this.products.length);
+                // for(let i=0;i<this.products.length;i++){
+                //     this.productId.push(this.products[i].productId)
+                // }
+                 console.log(this.productId);
+
             })
             .catch(err=>console.log(err))
 
-            // for(let i=0;i<this.products.length;i++){
-            //     console.log(this.products[i].productId,"productId");
-            //     axios.get(`http://10.20.4.110:8080/product/${this.products[i].productId}`)
-            //     .then(response=>console.log(response,"product data"))
+
+            
+
+            // this.productList=this.getProductList
+            // for(let i=0;i<this.productList.data.length;i++){
+            //     if(this.productId.includes(this.productList.data[i].id)){
+            //         this.cartItems.push(this.productList.data[i])
+            //     }
             // }
-            axios.get(`http://10.20.4.110:8080/product`)
-            .then(response=>{
-                console.log(response)
-                console.log(response.data.length)
-                for(let i=0;i<response.data.length;i++){
-                    //this.index=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
-                    if(this.productId.includes(response.data[i].id)){
-                        console.log(response.data[i].id);
-                        this.cartItems.push(response.data[i])
-                    }
-                }
-            })
+
+            // this.$store.dispatch('actionToGetProductList',{
+            //     success: (res)=>{
+            //         // console.log("respioinse",res);
+            //         //this.productList = res.products
+            //         this.productList= res.data;
+            //         for(let i=0;i<res.data.length;i++){
+            //             if(this.productId.includes(res.data[i].id)){
+            //                 this.cartItems.push(res.data[i])
+            //             }
+            //         }
+
+            //     }
+            // })
+
+            // axios.get(`http://10.20.4.110:8080/product`)
+            // .then(response=>{
+            //     console.log(response)
+            //     console.log(response.data.length)
+            //     for(let i=0;i<response.data.length;i++){
+            //         //this.index=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
+            //         if(this.productId.includes(response.data[i].id)){
+            //             console.log(response.data[i].id);
+            //             this.cartItems.push(response.data[i])
+            //         }
+            //     }
+            // })
             
 
         },
         mounted:function(){
+                this.$store.dispatch('actionToGetProductList',{
+                success: (res)=>{
+                    // console.log("respioinse",res);
+                    //this.productList = res.products
+                    for(let i=0;i<res.data.length;i++){
+                        if(this.productId.includes(res.data[i].id)){
+                            this.productList.push(res.data[i])
+                        }
+                    }
+                    //this.productList= res.data;
+                    console.log(this.productList);
+                }
+            })
+
+
+            // axios.get(`http://10.20.4.110:8080/product`)
+            // .then(response=>{
+            //     console.log(response)
+            //     console.log(response.data.length)
+            //     for(let i=0;i<response.data.length;i++){
+            //         //this.index=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
+            //         if(this.productId.includes(response.data[i].id)){
+            //             console.log(response.data[i].id);
+            //             this.cartItems.push(response.data[i])
+            //         }
+            //     }
+            // })
             // var cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]")
             // this.cartItems=cartItems
         },

@@ -1,7 +1,7 @@
 <template>
     <div>
         <LogoutHeader></LogoutHeader>
-            <h1>Welcome to cart {{this.getUser}}</h1>
+            <h1>Welcome to cart  {{this.getUser}}</h1>
             <div
             v-for="(data,index) in cartItems"
             :key="index"
@@ -13,7 +13,10 @@
             <div class="cartempty" v-if="cartItems.length==0">
                     <h3 class="textcart"> <i class="fa fa-info-circle"></i> Your Cart is Empty!</h3>
             </div>
-            <button @click="orderpage"> Order History </button>
+
+            <div v-if="cartItems.length!=0"><button class="buynow" @click="pushtoorderdb"><i class="fa fa-shopping-cart"></i> Buy Now</button> </div>
+
+            <button @click="orderpage">Order history</button>
         <Footer></Footer>
     </div>
 </template>
@@ -33,11 +36,16 @@ import { mapGetters } from 'vuex'
          
         data(){
             return{
-                products:[],
+                posts:{
+                    userId:this.getUser,
+                    productId:[],
+                    quantity:[],
+                    merchantId:[],
+                    cartId:[]
+                },
+             
                 cartCount:0,
                 cartItems:[],
-                productId:[],
-                index:0
             }
         },
         components:{
@@ -46,25 +54,48 @@ import { mapGetters } from 'vuex'
             Footer
         },
         methods:{
-            orderpage() {
+            orderpage(){
                 this.$router.push('/order')
-            }
+            },
+            pushtoorderdb(){
+                console.log(this.posts+"db");
+                console.log(this.posts.merchantId);
+                axios.post("http://10.20.4.110:9094/order", this.posts, {
+                    "Content-Type": "application/json; charset-UTF-8",
+                    mode:'no-cors'
+                })
+                // axios.post("http://10.20.4.110:9094/order",this.posts,{
+                //     mode:'no-cors'
+                // })
+                .then(response=>console.log(response))
+                .catch(err=>console.log(err))
 
+
+
+                axios.delete(`http://10.20.4.110:9090/cart/user/${this.posts.userId}`)
+                .catch(err=>console.log(err))
+            }
         },
         beforeMount: function(){
-            console.log("inside before mount")
             // var cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
             // this.cartCount = cartItems.length;
+            this.posts.userId=this.getUser
             axios.get(`http://10.20.4.110:9090/cart/user/${this.getUser}`)
             .then(response=>{
-                console.log(this.getUser);
-                this.products=response.data;
+                // this.products=response.data;
                 //console.log(this.products[0].productId,"productsssss");
-                console.log(this.products.length);
-                for(let i=0;i<this.products.length;i++){
-                    this.productId.push(this.products[i].productId)
-                }
-                console.log(this.productId);
+                // console.log(this.products.length);
+                // for(let i=0;i<this.products.length;i++){
+                //     this.productId.push(this.products[i].productId)
+                // }
+                // console.log(this.productId);
+                    for(let i=0;i<response.data.length;i++){
+                        this.posts.cartId.push(response.data[i].id)
+                        this.posts.productId.push(response.data[i].productId)
+                        this.posts.quantity.push(response.data[i].quantity)
+                        this.posts.merchantId.push(response.data[i].merchantId)
+                    }
+                    console.log(this.cartId);
             })
             .catch(err=>console.log(err))
 
@@ -79,12 +110,14 @@ import { mapGetters } from 'vuex'
                 console.log(response.data.length)
                 for(let i=0;i<response.data.length;i++){
                     //this.index=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
-                    if(this.productId.includes(response.data[i].id)){
+                    if(this.posts.productId.includes(response.data[i].id)){
                         console.log(response.data[i].id);
                         this.cartItems.push(response.data[i])
                     }
                 }
             })
+            
+
         },
         mounted:function(){
             // var cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]")
@@ -129,9 +162,5 @@ footer{
 h1{
     text-align: center;
     margin-top: 15vh;
-}
-button {
-    height: 50px;
-    width: 50px;
 }
 </style>

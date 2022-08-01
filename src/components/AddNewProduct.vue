@@ -43,7 +43,7 @@
                     <input type="text" class="box" id="common-id" name="screenType" value=" " v-model="merch.screenType"><br>
                     <label for="screenSize">Screen Size:</label><br />
                     <input type="number" class="box" id="common-id" name="screenSize" value=" " v-model="merch.screenSize"><br>
-                    <label for="image">Image:</label><br />
+                    <label for="image" class="image-url">Image:</label><br />
                     <input type="text" class="box" id="image" name="image" value=" " v-model="merch.image"><br><br>
                     <button class="button" type="button" onclick="alert('Your product is Added')"
                         @click="addToAPI">Submit</button>
@@ -204,6 +204,10 @@ i {
 }
 .common-id {
     width: 100%;
+}
+.image-url {
+    height: 32px;
+    width: 244px;
 }
 /* .label{
     display: inline-block;

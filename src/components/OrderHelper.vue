@@ -2,7 +2,7 @@
     <div class="carthelper">
         <div class="flexbox">
             <div class="box1">
-                <img class="img" :src="[product.image]" :alt="[product.brand]">
+                <img class="img" :src="product.image" :alt="[product.brand]">
             </div>
             <div class="box2">
                 <p> <b>Product Name : </b> {{ product.brand }} </p>
@@ -63,7 +63,7 @@ import { mapGetters } from 'vuex'
     padding: 10px;
     outline: none;
     width: 200px;
-    background-color: rgb(221, 63, 63);
+    background-color: #1F305E;
     border: none;
     border-radius: 30px;
     cursor: pointer;

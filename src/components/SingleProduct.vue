@@ -53,24 +53,27 @@ Vue.use(VueAxios,axios)
     methods: {
         addToCartHandler(val) {
             console.log("first")
-            if(1)
-            {
-                console.log("in the get")
-              axios.get('http://10.20.4.110:8080/product/'+this.posts.productId,{
-                'Content-Type': 'application/json; charset=UTF-8'
-            } )
-            .then((response )=> 
-                {this.posts.merchantId=response.data.merchantId
-                console.log(this.posts.merchantId,"inside")
-                })
-                .catch(err=>console.log(err))
+            // if(1)
+            // {
+            //     console.log("in the get")
+            //   axios.get('http://10.20.4.110:8080/product/'+this.posts.productId,{
+            //     'Content-Type': 'application/json; charset=UTF-8'
+            // } )
+            // .then((response )=> 
+            //     {this.posts.merchantId=response.data.merchantId
+            //     console.log(this.posts.merchantId,"inside")
+            //     })
+            //     .catch(err=>console.log(err))
 
-            }
+            // }
                 // console.log(this.getUser,"asdasda");
                 // console.log(response.data.merchantId,"asdasdadasda");
-                this.posts.userId=this.getUser
-                console.log(this.posts.merchantId,"posts");
+                // this.posts.userId=this.getUser
+                // console.log(this.posts.merchantId,"posts");
 
+                console.log(this.posts.userId);
+                console.log(this.posts);
+                //0.20.4.110
                 axios.post("http://10.20.4.110:9090/cart", this.posts, {
                     "Content-Type": "application/json; charset-UTF-8"
                 })
@@ -88,7 +91,7 @@ Vue.use(VueAxios,axios)
                     .catch(function (error) {
                     console.log(error);
                 });
-                console.log(this.posts);
+                
             // var cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
             // if (this.isAddToCart) {
             //     cartItems.push(this.product);
@@ -109,6 +112,17 @@ Vue.use(VueAxios,axios)
     },
     components:{
         ProductDetailsVue
+    },
+    beforeMount:function(){
+        this.posts.userId=this.getUser
+        axios.get('http://10.20.4.110:8080/product/'+this.posts.productId,{
+                'Content-Type': 'application/json; charset=UTF-8'
+            } )
+            .then((response )=> 
+                {this.posts.merchantId=response.data.merchantId
+                console.log(this.posts.merchantId,"inside")
+                })
+                .catch(err=>console.log(err))
     }
     }
 </script>
@@ -122,10 +136,12 @@ Vue.use(VueAxios,axios)
         /* font-size: 15px; */
     }
     .offer{
-        background-color: rgb(189, 53, 76);
+        color: white;
+        background-color: #1F305E;
     }
     .add_to_cart{
-        background-color: rgb(189, 53, 76);
+        color: white;
+        background-color: #1F305E;
     }
 
 </style>

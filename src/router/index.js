@@ -22,6 +22,7 @@ import AddNewProduct from "@/components/AddNewProduct"
 import Order from '@/components/Order'
 import Account from '@/components/Account'
 import BeforeLoginCartH from '@/components/BeforeLoginCartH'
+import ContactUs from '@/components/ContactUs'
 
 Vue.use(Router);
 export default new Router({
@@ -141,6 +142,11 @@ export default new Router({
       path: "/beforecarth",
       name: "BeforeLoginCartH",
       component: BeforeLoginCartH
+    },
+    {
+      path: "/contact",
+      name: "ContactUs",
+      component: ContactUs
     }
     // {
     //   path: '/products',

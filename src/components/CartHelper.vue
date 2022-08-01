@@ -11,8 +11,8 @@
                 <p> <b>Price : </b> ₹ {{ product.price }}.00 </p>
                 <!-- <p> <b>Stock : </b> {{ product.stock }} </p> -->
 
-                <span><button class="buynow" @click="pushtoorderdb"><i class="fa fa-shopping-cart"></i> Buy Now</button> </span>
-                <span><button class="delete" @click="removeCart"><i class="fa fa-trash"></i> Remove</button> </span>
+                <span><input type="number" name="quantity" v-model="posts.quantity"></span>
+                <span><button class="delete" @click="removeCart"><i class="fa fa-trash"></i> - </button> </span>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@ import { mapGetters } from 'vuex'
                 posts:{
                     userId:this.getUser,
                     productId:this.product.id,
-                    quantity:0,
+                    quantity:1,
                     merchantId:this.getMerchant,
                     cartId:[]
                 }
@@ -117,9 +117,12 @@ import { mapGetters } from 'vuex'
     border: 2px solid #1F305E;
 }
 .delete {
-    padding: 10px;
+    height: 28px;
+    padding: 3px;
+    padding-left: 19px;
+    padding-right: 25px;
     outline: none;
-    width: 200px;
+    width: 20px;
     background-color: rgb(255, 255, 255);
     border: 2px solid rgb(74, 69, 69);
     border-radius: 30px;
@@ -129,7 +132,7 @@ import { mapGetters } from 'vuex'
 }
 
 .img {
-    width: 100%;
+    width: 61%;
     height: 190px;
     /* object-fit: cover; */
     padding: 10px;

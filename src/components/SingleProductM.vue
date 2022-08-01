@@ -6,13 +6,16 @@
 
             </p>
             <div class="offerdiv">
-                <button class="offer">{{Math.ceil(product.price)}}</button>&nbsp; &nbsp;
+                <span class="offer">Rs {{ Math.ceil(product.price)}}</span><br>
+                <span style="font-weight: bolder;">{{ product.brand }}</span><br/>
+
+                <button class="edit">EDIT</button>
+                <button class="delete">DELETE</button>
+                
                 <!-- <button class="add_to_cart" @click="addToCartHandler(product.id)"><i class="fa fa-shopping-cart"></i> -->
                     <!-- <span class="cartText">{{ isAddToCart ? 'Add to Cart' : 'Remove Cart' }}</span></button> -->
             </div>
-            <div class="title">
-                <p style="font-weight: bolder;">{{ product.brand }}</p>
-            </div>
+            
         </div>
     </div>
 </template>
@@ -121,11 +124,9 @@ Vue.use(VueAxios,axios)
         width:250px;
         /* font-size: 15px; */
     }
-    .offer{
-        background-color: rgb(189, 53, 76);
-    }
+    
     .add_to_cart{
-        background-color: rgb(189, 53, 76);
+        background-color: #1F305E;
     }
 
 </style>
