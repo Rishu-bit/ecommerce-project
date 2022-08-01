@@ -99,6 +99,12 @@ import { mapGetters } from 'vuex'
     padding: 10px;
     border-radius: 15px;
 }
+@media screen and (max-width: 450px){
+    .img {
+        width: 170%;
+        height: 180px;
+    }
+}
 
 .carthelper {
     /* border: 2px solid gray; */

@@ -1,12 +1,6 @@
 <template>
     <div>
-            <header>
-                <nav>
-                    <router-link to="/" style="color: white;font-size:x-large;font-weight: bolder;margin-right: 25px;">Home</router-link>
-                    <router-link to="/product" style="color: white;font-size:x-large;font-weight: bolder;margin-right: 25px;">Product</router-link>
-                    <router-link to="/cart" style="color: white;font-size:x-large;font-weight: bolder;margin-right: 25px;">Cart</router-link>
-                </nav>
-            </header>
+        <Header></Header>
         <div style="margin-top:100px">
             <img id="image" :src="[cartItems.image]" alt="[cartItems.title]"/>
         </div>
@@ -22,6 +16,7 @@
 <script>
 import SingleProductVue from './SingleProduct.vue'
 import {mapGetters} from 'vuex'
+import Header from './Header.vue'
 /* eslint-disable */
   export default{
         name:'ProductDetails',
@@ -36,8 +31,9 @@ import {mapGetters} from 'vuex'
 
         },
         components:{
-            SingleProductVue
-        },
+    SingleProductVue,
+    Header
+},
         computed:{
             ...mapGetters(['getProductList','actionToGetProductList'])
         },
@@ -57,5 +53,10 @@ import {mapGetters} from 'vuex'
     .image{
         width: 350px;
         height: 350px;
+    }
+    .navbar {
+        border: 1px solid black;
+        background-color: #1F305E;
+        color: white;
     }
 </style>

@@ -23,6 +23,8 @@ import Order from '@/components/Order'
 import Account from '@/components/Account'
 import BeforeLoginCartH from '@/components/BeforeLoginCartH'
 import ContactUs from '@/components/ContactUs'
+import FilterComponentBeforeLogin from '@/components/FilterComponentBeforeLogin'
+import UpdateAddNP from '@/components/UpdateAddNP'
 
 Vue.use(Router);
 export default new Router({
@@ -72,6 +74,11 @@ export default new Router({
       path: "/filter",
       name: "FilterComp",
       component: FilterComp
+    },
+    {
+      path: "filterbefore",
+      name: "FilterComponentBeforeLogin",
+      component: FilterComponentBeforeLogin
     },
     {
       path: "/product-comp-home",
@@ -127,6 +134,11 @@ export default new Router({
       path: "/add",
       name: "AddNewProduct",
       component: AddNewProduct
+    },
+    {
+      path: "/edit",
+      name: "UpdateAddNP",
+      component: UpdateAddNP
     },
     {
       path: "/order",

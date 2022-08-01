@@ -64,16 +64,18 @@ import { mapGetters } from 'vuex'
                     "Content-Type": "application/json; charset-UTF-8",
                     mode:'no-cors'
                 })
+
                 // axios.post("http://10.20.4.110:9094/order",this.posts,{
                 //     mode:'no-cors'
                 // })
                 .then(response=>console.log(response))
                 .catch(err=>console.log(err))
-
+                window.location.reload()
 
 
                 axios.delete(`http://10.20.4.110:9090/cart/user/${this.posts.userId}`)
                 .catch(err=>console.log(err))
+                window.location.reload()
             }
         },
         beforeMount: function(){
@@ -146,7 +148,7 @@ body{
 a{
     text-decoration: solid;
     font-size: larger;
-    margin-right: 25px;
+    margin-right: -2px;
 }
 
 footer{

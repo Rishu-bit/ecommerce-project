@@ -134,6 +134,7 @@ export default {
 						this.$store.commit('setMerchant',this.id)
                         this.$router.push("/homepagem");
                     }
+					window.location.reload()
                 });
             }
             else {

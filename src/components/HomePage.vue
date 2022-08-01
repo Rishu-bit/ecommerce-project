@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <Header></Header>
-    <FilterComp></FilterComp>
+    <FilterComponentBeforeLogin></FilterComponentBeforeLogin>
     <Slider></Slider>
     <div class="products"></div>
     <ProductsComp></ProductsComp>
@@ -15,6 +15,7 @@ import Footer from './Footer.vue'
 import FilterComp from './FilterComp.vue'
 import ProductsComp from './ProductsComp.vue'
 import Slider from './Slider.vue'
+import FilterComponentBeforeLogin from './FilterComponentBeforeLogin.vue'
 export default {
   name: 'HomePage',
   data () {
@@ -22,7 +23,7 @@ export default {
       msg: 'Welcome to HomePage'
     }
   },
-  components: { Header, Footer, FilterComp, ProductsComp, Slider }
+  components: { Header, Footer, FilterComp, ProductsComp, Slider, FilterComponentBeforeLogin }
 }
 </script>
 

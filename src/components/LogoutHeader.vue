@@ -1,8 +1,9 @@
 <template>
   <div class="header-component">
-    <span class="logo"><router-link to="/" class="a-link">ElectroBay</router-link></span>
+    <span class="logo"><router-link to="/homel" class="a-link">ElectroBay</router-link></span>
     <!-- <input type="text" class="search-section" placeholder="search here....."> -->
     <div class="header-nav">
+      <!-- <router-link to="/homel" class="a-link">Home</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
       <router-link to="/" class="a-link">Logout</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <router-link to="/cart" class="cart-link">Cart<sup class="cartcount">{{this.cartCount}}</sup></router-link>&nbsp;&nbsp;&nbsp;
@@ -91,14 +92,20 @@ export default {
     float: right;
     padding-right: 30px;
   }
+  @media screen and (max-width: 450px){
+    .header-nav {
+      padding-right: 0px;
+    }
+  }
   .a-link {
+    color: white;
     font-size: 16px;
   }
   .a-link:hover {
     background-color: white;
     color: #1F305E;
     border: 1px solid black;
-    border-top-left-radius: 6px;
+    /* border-top-left-radius: 6px; */
   }
   .cart-link {
     margin-top: -4px;

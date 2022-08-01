@@ -6,7 +6,7 @@
 
             </p>
             <div class="offerdiv">
-                <button class="offer">{{Math.ceil(product.price)}}</button>&nbsp; &nbsp;
+                <button class="offer">Rs {{Math.ceil(product.price)}}</button>&nbsp; &nbsp;
                 <button class="add_to_cart" @click="addToCartHandler(product.id)"><i class="fa fa-shopping-cart"></i>
                     <span class="cartText">{{ isAddToCart ? 'Add to Cart' : 'Remove Cart' }}</span></button>
             </div>
@@ -79,6 +79,7 @@ Vue.use(VueAxios,axios)
                 })
                     .then(response => {
                     console.log("response: " + response);
+                    window.location.reload()
                     // if (response.data) {
                     //     alert("successfully registered");
                     //     this.$router.push("/home");
@@ -90,6 +91,7 @@ Vue.use(VueAxios,axios)
                 })
                     .catch(function (error) {
                     console.log(error);
+                    window.location.reload()
                 });
                 
             // var cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");

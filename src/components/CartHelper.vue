@@ -72,6 +72,7 @@ import { mapGetters } from 'vuex'
                 // })
                 .then(response=>console.log(response))
                 .catch(err=>console.log(err))
+                window.location.reload()
             }
 
         },
@@ -96,6 +97,8 @@ import { mapGetters } from 'vuex'
 
 <style>
     .buynow {
+        height: 43px;
+        margin-bottom: 15px;
     padding: 10px;
     outline: none;
     width: 200px;

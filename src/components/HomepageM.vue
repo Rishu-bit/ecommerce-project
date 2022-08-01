@@ -74,7 +74,16 @@ Vue.use(VueAxios,axios)
 
         },
         watch:{
-          
+            searchText:function(val){
+                //this.productList=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
+                console.log(val,"search");
+                axios.get('http://10.20.4.166:8081/findBySearch/'+val)
+                .then((res)=>{
+                    this.productList=res.data
+                    // console.log("hello",res)
+                })
+                .catch(err=>console.log(err))
+            },
         }
     }
 </script>
