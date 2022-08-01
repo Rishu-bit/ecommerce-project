@@ -74,7 +74,11 @@ Vue.use(VueAxios,axios)
 
         },
         watch:{
+            
             searchText:function(val){
+                if(val.length==0){
+                    window.location.reload()
+                }
                 //this.productList=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
                 console.log(val,"search");
                 axios.get('http://10.20.4.166:8081/findBySearch/'+val)
@@ -171,7 +175,6 @@ body{
     flex-wrap: wrap;
     height: 863px;
     overflow: scroll;
-    border: 1px solid black;
     padding-right: 10px;
     padding-bottom: 36px;
     margin-left: -135px;

@@ -2,6 +2,7 @@
     <div>
         <LogoutHeader></LogoutHeader>
             <h1>Welcome to cart  {{this.getUser}}</h1>
+            <button @click="orderpage">Order history</button>
             <div
             v-for="(data,index) in cartItems"
             :key="index"
@@ -16,7 +17,7 @@
 
             <div v-if="cartItems.length!=0"><button class="buynow" @click="pushtoorderdb"><i class="fa fa-shopping-cart"></i> Buy Now</button> </div>
 
-            <button @click="orderpage">Order history</button>
+            
         <Footer></Footer>
     </div>
 </template>

@@ -11,8 +11,10 @@
                 <p> <b>Price : </b> ₹ {{ product.price }}.00 </p>
                 <!-- <p> <b>Stock : </b> {{ product.stock }} </p> -->
 
-                <span><input type="number" name="quantity" v-model="posts.quantity"></span>
-                <span><button class="delete" @click="removeCart"><i class="fa fa-trash"></i> - </button> </span>
+                <!-- <span><input type="number" name="quantity" v-model="posts.quantity"></span> -->
+                <span><button @click="add"> + </button><span> {{ this.posts.counter }} </span><button @click="sub"> - </button></span>
+
+
             </div>
         </div>
     </div>
@@ -35,7 +37,8 @@ import { mapGetters } from 'vuex'
                     productId:this.product.id,
                     quantity:1,
                     merchantId:this.getMerchant,
-                    cartId:[]
+                    cartId:[],
+                    counter:1
                 }
             }
         },
@@ -52,6 +55,15 @@ import { mapGetters } from 'vuex'
             ...mapGetters(['getUser','getMerchant'])
         },  
         methods:{
+            add() {
+            this.posts.counter = this.posts.counter + 1;
+                this.posts.quantity = this.posts.counter;
+                
+            },
+            sub() {
+                this.posts.counter = this.posts.counter - 1;
+                this.posts.quantity = this.posts.counter;
+            },
             removeCart(){
                 // var cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]")
                 // cartItems=cartItems.filter((data)=>data.id!==this.product.id)

@@ -11,7 +11,7 @@
 <div class="form-container sign-up-container">
 <form>
 <h1>Create Account</h1>
-<input type="text" name="name" v-model="posts.name" placeholder="Name" />
+<input type="text" name="name" v-model="posts.name" placeholder="Name"/>
 <input type="email" name="emailId" v-model="posts.emailId" placeholder="Email" />
 <input type="password" name="password" v-model="posts.password" placeholder="Create Password" />
 <input type="mobilenumber" name="mobileNumber" v-model="posts.mobileNumber" placeholder="Mobile Number" />
@@ -74,7 +74,18 @@ export default {
         postData(event) {
             event.preventDefault();
             //console.log(this.posts);
-            if (this.posts.name && this.posts.emailId && this.posts.password && this.posts.mobileNumber) {
+            var mailformat = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
+            if(!this.posts.emailId.match(mailformat))
+            {
+                alert("InValid email address!");
+            }
+            var passformat='^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&#]{8,}';
+            if(!this.posts.password.match(passformat))
+            {
+                alert("Enter one lowercase, one uppercase, one number, one special character!!!!");
+            }
+            else {
+                if(this.posts.name && this.posts.emailId && this.posts.password && this.posts.mobileNumber) {
                 axios.post("http://10.20.4.157:8080/user", this.posts, {
                     "Content-Type": "application/json; charset-UTF-8"
                 })
@@ -113,6 +124,7 @@ export default {
                     alert("mobilenumber is required");
                     return;
                 }
+            }
             }
         },
         login(event) {

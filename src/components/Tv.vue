@@ -8,20 +8,20 @@
                         <h3 style="text-decoration: underline;">Brand</h3>
                         <input type="checkbox" name="checkbox" value="samsung" v-model="checkBoxes"/>
                         <label for="checkbox">Samsung</label><br>
-                        <input type="checkbox" value="apple" name="checkbox" v-model="checkBoxes"/>
-                        <label for="checkbox">Apple</label><br>
-                        <input  type="checkbox" value="redmi" name="checkbox" v-model="checkBoxes"/>
-                        <label for="checkbox">Redmi</label><br>
-                        <input  type="checkbox" value="oppo" name="checkbox" v-model="checkBoxes"/>
-                        <label for="checkbox">Oppo</label><br>
-                        <input type="checkbox" value="fog" name="checkbox" v-model="checkBoxes"/>
-                        <label for="checkbox">Fog</label><br>
-                        <input type="checkbox" value="huawei" name="checkbox" v-model="checkBoxes"/>
-                        <label for="checkbox">Huawei</label><br>
-                        <input type="checkbox" value="infinix" name="checkbox" v-model="checkBoxes"/>
-                        <label for="checkbox">Infinix</label><br>
-                        <input type="checkbox" value="oneplus" name="checkbox" v-model="checkBoxes"/>
-                        <label for="checkbox">One plus</label><br>
+                        <input type="checkbox" value="lg" name="checkbox" v-model="checkBoxes"/>
+                        <label for="checkbox">LG</label><br>
+                        <input  type="checkbox" value="sony" name="checkbox" v-model="checkBoxes"/>
+                        <label for="checkbox">Sony</label><br>
+                        <input  type="checkbox" value="philps" name="checkbox" v-model="checkBoxes"/>
+                        <label for="checkbox">Philips</label><br>
+                        <input type="checkbox" value="mi" name="checkbox" v-model="checkBoxes"/>
+                        <label for="checkbox">Mi</label><br>
+                        <input type="checkbox" value="realme" name="checkbox" v-model="checkBoxes"/>
+                        <label for="checkbox">Realme</label><br>
+                        <input type="checkbox" value="onida" name="checkbox" v-model="checkBoxes"/>
+                        <label for="checkbox">Onida</label><br>
+                        <input type="checkbox" value="hisense" name="checkbox" v-model="checkBoxes"/>
+                        <label for="checkbox">Hisense</label><br>
                     </div>
                         <div class="strap">
                         <h3 style="text-decoration: underline;">Screen Size</h3>
@@ -133,6 +133,9 @@ Vue.use(VueAxios,axios)
         },
         watch:{
             searchText:function(val){
+                if(val.length==0){
+                    window.location.reload()
+                }
                 //this.productList=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
                 console.log(val,"search");
                 axios.get('http://10.20.4.166:8081/findBySearch/'+val)
@@ -258,7 +261,6 @@ body{
     flex-wrap: wrap;
     height: 863px;
     overflow: scroll;
-    border: 1px solid black;
     padding-right: 10px;
     padding-bottom: 36px;
     margin-left: -135px;

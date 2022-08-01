@@ -6,21 +6,21 @@
                 <div class="side">
                     <div class="brand">
                         <h3 style="text-decoration: underline;">Brand</h3>
-                        <input type="checkbox" name="checkbox" value="allensolly" v-model="checkBoxes"/>
+                        <input type="checkbox" name="checkbox" value="boat" v-model="checkBoxes"/>
                         <label for="checkbox">Boat</label><br>
-                        <input type="checkbox" value="casio" name="checkbox" v-model="checkBoxes"/>
+                        <input type="checkbox" value="oneplus" name="checkbox" v-model="checkBoxes"/>
                         <label for="checkbox">Oneplus</label><br>
-                        <input  type="checkbox" value="fastrack" name="checkbox" v-model="checkBoxes"/>
+                        <input  type="checkbox" value="realme" name="checkbox" v-model="checkBoxes"/>
                         <label for="checkbox">Realme</label><br>
-                        <input  type="checkbox" value="fossil" name="checkbox" v-model="checkBoxes"/>
+                        <input  type="checkbox" value="sony" name="checkbox" v-model="checkBoxes"/>
                         <label for="checkbox">Sony</label><br>
-                        <input type="checkbox" value="sonata" name="checkbox" v-model="checkBoxes"/>
+                        <input type="checkbox" value="oppo" name="checkbox" v-model="checkBoxes"/>
                         <label for="checkbox">Oppo</label><br>
-                        <input type="checkbox" value="titan" name="checkbox" v-model="checkBoxes"/>
+                        <input type="checkbox" value="tec" name="checkbox" v-model="checkBoxes"/>
                         <label for="checkbox">TechFire</label><br>
-                        <input type="checkbox" value="rolex" name="checkbox" v-model="checkBoxes"/>
+                        <input type="checkbox" value="boult" name="checkbox" v-model="checkBoxes"/>
                         <label for="checkbox">Boult</label><br>
-                        <input type="checkbox" value="quartz" name="checkbox" v-model="checkBoxes"/>
+                        <input type="checkbox" value="mivi" name="checkbox" v-model="checkBoxes"/>
                         <label for="checkbox">Mivi</label><br>
                     </div>
 
@@ -139,6 +139,9 @@ Vue.use(VueAxios,axios)
         },
         watch:{
             searchText:function(val){
+                if(val.length==0){
+                    window.location.reload()
+                }
                 //this.productList=this.getProductList.filter((data)=>data.brand.toLowerCase().indexOf(val.toLowerCase())>-1)
                 console.log(val,"search");
                 axios.get('http://10.20.4.166:8081/findBySearch/'+val)
@@ -171,7 +174,6 @@ Vue.use(VueAxios,axios)
                         if(x.category.toLowerCase().includes(y.toLowerCase())){
                             return x;
                         }
-                        
                     } 
                 });
                 if(this.productList.length==0){
@@ -264,7 +266,6 @@ body{
     flex-wrap: wrap;
     height: 863px;
     overflow: scroll;
-    border: 1px solid black;
     padding-right: 10px;
     padding-bottom: 36px;
     margin-left: -135px;

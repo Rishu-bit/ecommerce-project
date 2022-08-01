@@ -127,6 +127,12 @@ export default {
                 });
         }
     },
+    // mounted: function() {
+    //     window.location.reload()
+    // },
+    // beforeMount:function(){
+    //     // window.location.reload()
+    // },
 
     components: { Header, Footer, HeaderAfterLogin }
 
