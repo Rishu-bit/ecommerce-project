@@ -8,7 +8,7 @@
             <div class="offerdiv">
                 <button class="offer">Rs {{Math.ceil(product.price)}}</button>&nbsp; &nbsp;
                 <button class="add_to_cart" @click="addToCartHandler(product.id)"><i class="fa fa-shopping-cart"></i>
-                    <span class="cartText">{{ isAddToCart ? 'Add to Cart' : 'Remove Cart' }}</span></button>
+                <span class="cartText">{{ isAddToCart ? 'Add to Cart' : 'Added to Cart' }}</span></button>
             </div>
             <div class="title">
                 <p style="font-weight: bolder;">{{ product.brand }}</p>
@@ -70,16 +70,21 @@ Vue.use(VueAxios,axios)
                 // console.log(response.data.merchantId,"asdasdadasda");
                 // this.posts.userId=this.getUser
                 // console.log(this.posts.merchantId,"posts");
-
-                console.log(this.posts.userId);
-                console.log(this.posts);
+                let obj ={}
+                obj.userId = parseInt(this.posts.userId)
+                obj.merchantId = this.posts.merchantId
+                obj.quantity = this.posts.quantity
+                obj.productId = this.posts.productId
+                console.log(obj);
+                // console.log(this.posts.userId);
+                console.log(obj);
                 //0.20.4.110
-                axios.post("http://10.20.4.110:9090/cart", this.posts, {
+                axios.post("http://10.20.4.110:9090/cart", obj, {
                     "Content-Type": "application/json; charset-UTF-8"
                 })
                     .then(response => {
                     console.log("response: " + response);
-                    window.location.reload()
+                    // window.location.reload()
                     // if (response.data) {
                     //     alert("successfully registered");
                     //     this.$router.push("/home");
@@ -106,6 +111,7 @@ Vue.use(VueAxios,axios)
             //     console.log('removefrom cart');
             // }
             this.isAddToCart = !this.isAddToCart
+            // window.location.reload()
         },
         passToDetails() {
              this.$router.push('/products/'+this.product.id)

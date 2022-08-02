@@ -9,13 +9,13 @@
   </div>
 <div class="container" id="container">
 <div class="form-container sign-up-container">
-<form>
+<form @submit="postData">
 <h1>Create Account</h1>
 <input type="text" name="name" v-model="posts.name" placeholder="Name"/>
-<input type="email" name="emailId" v-model="posts.emailId" placeholder="Email" />
-<input type="password" name="password" v-model="posts.password" placeholder="Create Password" />
-<input type="mobilenumber" name="mobileNumber" v-model="posts.mobileNumber" placeholder="Mobile Number" />
-<button @click="postData">Sign Up</button>
+<input type="email" name="emailId" v-model="posts.emailId" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+<input type="password" name="password" v-model="posts.password" placeholder="Create Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required/>
+<input type="mobilenumber" name="mobileNumber" v-model="posts.mobileNumber" placeholder="Mobile Number"  pattern="[7-9]{1}[0-9]{9}" required/>
+<button type="submit">Sign Up</button>
 </form>
 </div>
 <div class="form-container sign-in-container">
@@ -74,17 +74,20 @@ export default {
         postData(event) {
             event.preventDefault();
             //console.log(this.posts);
-            var mailformat = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
-            if(!this.posts.emailId.match(mailformat))
-            {
-                alert("InValid email address!");
-            }
-            var passformat='^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&#]{8,}';
-            if(!this.posts.password.match(passformat))
-            {
-                alert("Enter one lowercase, one uppercase, one number, one special character!!!!");
-            }
-            else {
+            // var mailformat = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
+            // if(!this.posts.emailId.match(mailformat))
+            // {
+            //     alert("InValid email address!");
+            // }
+            // var passformat='^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&#]{8,}';
+            // if(!this.posts.password.match(passformat))
+            // {
+            //     alert("Enter one lowercase, one uppercase, one number, one special character!!!!");
+            // }
+            // // var numberFormat='/(7|8|9)\d{9}/'
+            // // if(!this.posts.mobileNumber.includes(numberFormat)){
+            // //     alert("Enter valid mobile number!!")
+            // // }
                 if(this.posts.name && this.posts.emailId && this.posts.password && this.posts.mobileNumber) {
                 axios.post("http://10.20.4.157:8080/user", this.posts, {
                     "Content-Type": "application/json; charset-UTF-8"
@@ -124,7 +127,6 @@ export default {
                     alert("mobilenumber is required");
                     return;
                 }
-            }
             }
         },
         login(event) {

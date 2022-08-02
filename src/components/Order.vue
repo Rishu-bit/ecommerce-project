@@ -55,21 +55,21 @@ import OrderHelper from './OrderHelper.vue'
             // var cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
             // this.cartCount = cartItems.length;
             axios.get(`http://10.20.4.110:9094/order/user/${this.getUser}`)
-            .then(response=>{
-            //this.products=response.data;
-            console.log(response);
-            for(let i=0;i<response.data.length;i++){
-            for(let j=0;j<response.data[i].productId.length;i++){
-            this.productId.push(response.data[i].productId[j])
-            }
-            }
-            //this.productId=response.data[0].productId 
-            //console.log(this.products[0].productId,"productsssss");
-            // console.log(this.products.length);
-            // for(let i=0;i<this.products.length;i++){
-            // this.productId.push(this.products[i].productId)
-            // }
-            console.log(this.productId);
+                .then(response=>{
+                //this.products=response.data;
+                        console.log(response);
+                        for(let i=0;i<response.data.length;i++){
+                        for(let j=0;j<response.data[i].productId.length;i++){
+                        this.productId.push(response.data[i].productId[j])
+                    }
+                }
+                //this.productId=response.data[0].productId 
+                //console.log(this.products[0].productId,"productsssss");
+                // console.log(this.products.length);
+                // for(let i=0;i<this.products.length;i++){
+                // this.productId.push(this.products[i].productId)
+                // }
+                console.log(this.productId);
             
             })
             .catch(err=>console.log(err))

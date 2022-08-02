@@ -1,8 +1,8 @@
 <template>
     <div>
         <LogoutHeader></LogoutHeader>
-            <h1>Welcome to cart  {{this.getUser}}</h1>
-            <button @click="orderpage">Order history</button>
+            <h1>Welcome to cart User{{this.getUser}}</h1>
+            <button class="order" @click="orderpage">Order history</button>
             <div
             v-for="(data,index) in cartItems"
             :key="index"
@@ -16,8 +16,6 @@
             </div>
 
             <div v-if="cartItems.length!=0"><button class="buynow" @click="pushtoorderdb"><i class="fa fa-shopping-cart"></i> Buy Now</button> </div>
-
-            
         <Footer></Footer>
     </div>
 </template>
@@ -39,6 +37,7 @@ import { mapGetters } from 'vuex'
             return{
                 posts:{
                     userId:this.getUser,
+                    emailId:"",
                     productId:[],
                     quantity:[],
                     merchantId:[],
@@ -71,12 +70,12 @@ import { mapGetters } from 'vuex'
                 // })
                 .then(response=>console.log(response))
                 .catch(err=>console.log(err))
-                window.location.reload()
+                // window.location.reload()
 
 
                 axios.delete(`http://10.20.4.110:9090/cart/user/${this.posts.userId}`)
                 .catch(err=>console.log(err))
-                window.location.reload()
+                // window.location.reload()
             }
         },
         beforeMount: function(){
@@ -119,6 +118,11 @@ import { mapGetters } from 'vuex'
                     }
                 }
             })
+
+            axios.get('http://10.20.4.157:8080/user/'+this.posts.userId)
+            .then(response=>this.posts.emailId=response.data.emailId)
+            .catch(err=>console.log(err))
+            // window.location.reload()
             
 
         },
@@ -134,6 +138,19 @@ import { mapGetters } from 'vuex'
 </script>
 
 <style>
+.order {
+    height: 43px;
+    margin-bottom: 15px;
+    padding: 10px;
+    outline: none;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+;
+}
     header{
     top: 0px;
     z-index: 1;

@@ -1,5 +1,6 @@
 <template>
     <div class="carthelper">
+        <!-- {{product}} -->
         <div class="flexbox">
             <div class="box1">
                 <img class="img" :src="[product.image]" :alt="[product.brand]">
@@ -8,13 +9,12 @@
                 <p> <b>Product Name : </b> {{ product.brand }} </p>
                 <p> <b>Category : </b> {{ product.category }} </p>
                 <!-- <p> <b>Discount : </b> {{ product.discountPercentage }} % </p> -->
-                <p> <b>Price : </b> ₹ {{ product.price }}.00 </p>
+                <p> <b>Price : </b> ₹ {{ product.price * this.posts.quantity }}.00 </p>
                 <!-- <p> <b>Stock : </b> {{ product.stock }} </p> -->
 
                 <!-- <span><input type="number" name="quantity" v-model="posts.quantity"></span> -->
-                <span><button @click="add"> + </button><span> {{ this.posts.counter }} </span><button @click="sub"> - </button></span>
-
-
+                <span><button @click="add(product)"> + </button><span> {{ this.posts.counter }} </span><button @click="sub(product)"> - </button></span><br/><br/>
+                <button class="remove-button" @click="removeCart()">Remove</button>
             </div>
         </div>
     </div>
@@ -55,14 +55,42 @@ import { mapGetters } from 'vuex'
             ...mapGetters(['getUser','getMerchant'])
         },  
         methods:{
-            add() {
-            this.posts.counter = this.posts.counter + 1;
+            add(product) {
+                if(this.posts.counter==product.stock){
+                    alert("out of stock");
+                }
+                else{
+                let obj = {}
+                console.log(product);
+                this.posts.counter = this.posts.counter + 1;
                 this.posts.quantity = this.posts.counter;
-                
+                console.log(this.posts.quantity);
+                obj.userId = parseInt(this.getUser)
+                obj.productId = product.id
+                obj.merchantId = product.merchantId
+                obj.quantity = this.posts.quantity
+                console.log(obj);
+                axios.post(`http://10.20.4.110:9090/cart`,obj)
+                .catch(err=>console.log(err))
+                }
             },
-            sub() {
+            sub(product) {
+                if(this.posts.counter<=1){
+                    alert("select a quantity");
+                }
+                else{
+                let obj = {}
+                console.log(product);
                 this.posts.counter = this.posts.counter - 1;
                 this.posts.quantity = this.posts.counter;
+                obj.userId = parseInt(this.getUser)
+                obj.productId = product.id
+                obj.merchantId = product.merchantId
+                obj.quantity = this.posts.quantity
+                console.log(obj);
+                axios.post(`http://10.20.4.110:9090/cart`,obj)
+                .catch(err=>console.log(err))
+                }
             },
             removeCart(){
                 // var cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]")
@@ -71,6 +99,8 @@ import { mapGetters } from 'vuex'
                 console.log(this.product.id);
                 axios.delete(`http://10.20.4.110:9090/cart/product/${this.product.id}/${this.getUser}`)
                 .catch(err=>console.log(err))
+                this.$router.push('/cart')
+                // window.location.reload()
             },
             pushtoorderdb(){
                 console.log(this.posts+"db");
@@ -84,7 +114,7 @@ import { mapGetters } from 'vuex'
                 // })
                 .then(response=>console.log(response))
                 .catch(err=>console.log(err))
-                window.location.reload()
+                // window.location.reload()
             }
 
         },
@@ -108,7 +138,7 @@ import { mapGetters } from 'vuex'
 </script>
 
 <style>
-    .buynow {
+    .buynow,.remove-button {
         height: 43px;
         margin-bottom: 15px;
     padding: 10px;
@@ -122,6 +152,11 @@ import { mapGetters } from 'vuex'
     color: white;
 }
 .buynow:hover{
+    color: black;
+    background-color: white;
+    border: 2px solid rgb(74, 69, 69);
+}
+.remove-button:hover{
     color: black;
     background-color: white;
     border: 2px solid rgb(74, 69, 69);
