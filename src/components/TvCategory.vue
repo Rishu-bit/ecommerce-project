@@ -2,35 +2,35 @@
 <div>
 
 <HeaderAfterLogin></HeaderAfterLogin>
-<div class="MobileCategory">
+<div class="TelevisionCategory">
             <br />
-            <h1>Mobile</h1><br>
+            <h1>Television</h1><br>
             <div class="form">
-                <form>     
+                <form>   
                     <label for="merchantId">MerchantId:</label>
                     <br />
-                    <input type="number" class="box" id="common-id" name="merchantId" v-model="merch.merchantId"><br>                               
+                    <input type="number" class="box" id="common-id" name="merchantId" v-model="merch.merchantId" ><br>                                 
                     <label for="brand">Brand:</label><br />
                     <select class="box" id="brand" name="brand" v-model="merch.brand">
                         <option value="samsung">Samsung</option>
-                        <option value="apple">Apple</option>
-                        <option value="redmi">Redmi</option>
-                        <option value="oppo">Oppo</option>
-                        <option value="honor">Honor</option>
-                        <option value="huawei">Huawei</option>
-                        <option value="infinix">Infinix</option>
-                        <option value="oneplus">OnePlus</option>
-                    </select><br>
+                        <option value="lg">LG</option>
+                        <option value="phlips">Phlips</option>
+                        <option value="sony">Sony</option>
+                        <option value="mi">Mi</option>
+                        <option value="onida">Onida</option>
+                        <option value="hisense">Hisense</option>
+                        <option value="realme">Realme</option>
+                    </select><br>  
                     <label for="category">Category:</label><br />
-                    <input type="text" id="common-id" name="category"  placeholder="Mobile" value="Mobile" v-model="merch.category"><br />                 
+                    <input type="text" id="common-id" name="category" placeholder="television" value="Television" v-model="merch.category"><br />                  
                     <label for="price">Price:</label><br />
                     <input type="number" class="box" id="common-id" name="price" value="" v-model="merch.price"><br />
                     <label for="stock">Stock:</label><br />
                     <input type="number" class="box" id="common-id" name="stock" value=" " v-model="merch.stock"><br>
-                    <label for="camera">Camera:</label><br />
-                    <input type="number" class="box" id="common-id" name="camera" value=" " v-model="merch.camera"><br>
-                    <label for="ram">Ram:</label><br />
-                    <input type="number" class="box" id="common-id" name="ram" value=" " v-model="merch.ram"><br>                    
+                    <label for="screensize">ScreenSize:</label><br />
+                    <input type="number" class="box" id="common-id" name="screensize" value=" " v-model="merch.screensize"><br>
+                    <label for="screentype">ScreenType:</label><br />
+                    <input type="text" class="box" id="common-id" name="screentype" value=" " v-model="merch.screentype"><br>                    
                     <label for="image" class="image-url">Image:</label><br />
                     <input type="text" class="box" id="image" name="image" value=" " v-model="merch.image"><br><br>
                     <button class="button" type="button" @click="addToAPI"
@@ -41,6 +41,7 @@
        <Footer></Footer>
 </div>        
 </template>
+
 <script>
 import Vue from 'vue'
 import axios from 'axios'
@@ -68,8 +69,8 @@ export default{
                 brand: '',
                 price: '',
                 stock: '',
-                ram: '',
-                camera: '',
+                screensize: '',
+                screentype: '',
                 image: ''
             }
         };
@@ -85,8 +86,8 @@ export default{
                 brand: this.merch.brand,
                 price: this.merch.price,
                 stock: this.merch.stock,
-                ram: this.merch.ram,
-                processor: this.merch.camera,                
+                screensize: this.merch.screensize,
+                screentype: this.merch.screentype,                
                 image: this.merch.image
             }
             console.log(newmerch);
@@ -106,7 +107,7 @@ export default{
 </script>
 
 <style>
-.MobileCategory {
+.TelevisionCategory {
     margin-top: 110px;
     border: 100px;
 
@@ -114,7 +115,7 @@ export default{
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-                0 10px 10px rgba(0, 0, 0, 0.22);
+        0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: scroll;
     align-self: center;

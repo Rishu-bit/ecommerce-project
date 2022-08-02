@@ -14,9 +14,9 @@
 <form @submit="postData">
 <h1>Create Account</h1>
 <input type="text" name="name" v-model="posts.name" placeholder="Name"/>
-<input type="email" name="emailId" v-model="posts.emailId" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+<input type="email" name="emailId" v-model="posts.emailId" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="electrobay@gmail.com"/>
 <input type="password" name="password" v-model="posts.password" placeholder="Create Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required/>
-<input type="mobilenumber" name="mobileNumber" v-model="posts.mobileNumber" placeholder="Mobile Number"  pattern="[7-9]{1}[0-9]{9}" required/>
+<input type="mobilenumber" name="mobileNumber" v-model="posts.mobileNumber" placeholder="Mobile Number"  pattern="[7-9]{1}[0-9]{9}" title="Include 10 digits" required/>
 <button type="submit">Sign Up</button>
 </form>
 </div>

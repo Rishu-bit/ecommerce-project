@@ -13,7 +13,7 @@
                 <!-- <p> <b>Stock : </b> {{ product.stock }} </p> -->
 
                 <!-- <span><input type="number" name="quantity" v-model="posts.quantity"></span> -->
-                <span><button @click="add(product)"> + </button><span> {{ this.posts.counter }} </span><button @click="sub(product)"> - </button></span><br/><br/>
+                <span><button @click="add(product)"> + </button><span> {{ this.posts.quantity }} </span><button @click="sub(product)"> - </button></span><br/><br/>
                 <button class="remove-button" @click="removeCart()">Remove</button>
             </div>
         </div>

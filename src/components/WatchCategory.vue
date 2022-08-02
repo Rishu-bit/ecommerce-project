@@ -2,37 +2,37 @@
 <div>
 
 <HeaderAfterLogin></HeaderAfterLogin>
-<div class="MobileCategory">
+<div class="WatchCategory">
             <br />
-            <h1>Mobile</h1><br>
+            <h1>Watch</h1>
             <div class="form">
-                <form>     
+                <form> 
                     <label for="merchantId">MerchantId:</label>
                     <br />
-                    <input type="number" class="box" id="common-id" name="merchantId" v-model="merch.merchantId"><br>                               
+                    <input type="number" class="box" id="common-id" name="merchantId" v-model="merch.merchantId"><br>                                    
                     <label for="brand">Brand:</label><br />
-                    <select class="box" id="brand" name="brand" v-model="merch.brand">
-                        <option value="samsung">Samsung</option>
-                        <option value="apple">Apple</option>
-                        <option value="redmi">Redmi</option>
-                        <option value="oppo">Oppo</option>
-                        <option value="honor">Honor</option>
-                        <option value="huawei">Huawei</option>
-                        <option value="infinix">Infinix</option>
-                        <option value="oneplus">OnePlus</option>
-                    </select><br>
+                    <select class="box" id="brand" name="brand" v-model="merch.brand">                        
+                        <option value="casio">Casio</option>
+                        <option value="fastrack">Fastrack</option>
+                        <option value="fossil">Fossil</option>
+                        <option value="sonata">Sonata</option>
+                        <option value="titan">Titan</option>
+                        <option value="rolex">Rolex</option>
+                        <option value="quartz">Quartz</option>
+                        <option value="allensolly">AllenSolly</option>
+                    </select><br>  
                     <label for="category">Category:</label><br />
-                    <input type="text" id="common-id" name="category"  placeholder="Mobile" value="Mobile" v-model="merch.category"><br />                 
+                    <input type="text" id="common-id" name="category" placeholder="Watch" value="Watch" v-model="merch.category"><br />                  
                     <label for="price">Price:</label><br />
-                    <input type="number" class="box" id="common-id" name="price" value="" v-model="merch.price"><br />
+                    <input type="number" class="box" id="common-id" name="price" v-model="merch.price" required="" maxlength="6" minlength="1"><br />
                     <label for="stock">Stock:</label><br />
-                    <input type="number" class="box" id="common-id" name="stock" value=" " v-model="merch.stock"><br>
-                    <label for="camera">Camera:</label><br />
-                    <input type="number" class="box" id="common-id" name="camera" value=" " v-model="merch.camera"><br>
-                    <label for="ram">Ram:</label><br />
-                    <input type="number" class="box" id="common-id" name="ram" value=" " v-model="merch.ram"><br>                    
+                    <input class="box" id="common-id" name="stock" value=" " v-model="merch.stock"><br>
+                    <label for="dialShape">DialShape:</label><br />
+                    <input class="box" id="common-id" name="dialShape" value=" " v-model="merch.dialShape"><br>
+                    <label for="strapmaterial">StrapMaterial:</label><br />
+                    <input class="box" id="common-id" name="strapmaterial" value=" " v-model="merch.strapmaterial"><br>                    
                     <label for="image" class="image-url">Image:</label><br />
-                    <input type="text" class="box" id="image" name="image" value=" " v-model="merch.image"><br><br>
+                    <input class="box" id="image" name="image" value=" " v-model="merch.image"><br><br>
                     <button class="button" type="button" @click="addToAPI"
                         >Submit</button>
                 </form>
@@ -41,6 +41,7 @@
        <Footer></Footer>
 </div>        
 </template>
+
 <script>
 import Vue from 'vue'
 import axios from 'axios'
@@ -68,8 +69,8 @@ export default{
                 brand: '',
                 price: '',
                 stock: '',
-                ram: '',
-                camera: '',
+                dialShape: '',
+                strapmaterial: '',
                 image: ''
             }
         };
@@ -85,8 +86,8 @@ export default{
                 brand: this.merch.brand,
                 price: this.merch.price,
                 stock: this.merch.stock,
-                ram: this.merch.ram,
-                processor: this.merch.camera,                
+                ram: this.merch.dialShape,
+                processor: this.merch.strapmaterial,                
                 image: this.merch.image
             }
             console.log(newmerch);
@@ -106,7 +107,7 @@ export default{
 </script>
 
 <style>
-.MobileCategory {
+.WatchCategory {
     margin-top: 110px;
     border: 100px;
 

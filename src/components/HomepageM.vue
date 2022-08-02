@@ -34,7 +34,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import SingleProductM from './SingleProductM.vue'
-Vue.use(VueAxios,axios)
+Vue.use(VueAxios, axios)
 /* eslint-disable */
     export default{
         name:'Mobile',
@@ -188,7 +188,8 @@ body{
     border: 1px solid black;
     padding: 10px; 
     margin: 12px;
-    margin-left: 30px;  
+    margin-left: 30px;
+    padding: 20px; 
 }
 .searchbox {
     height: 50px;
@@ -221,6 +222,27 @@ body{
     position: fixed;
     text-align: left;
     margin-left: -393px;
+}
+
+.edit{
+    background-color: #1F305E;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 15px;
+    height: 30px;
+    width: 50px;
+}
+
+.delete{
+    background-color: #1F305E;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    height: 30px;
+    width: 70px;
 }
 @media screen and (max-width: 960px){
   .searchin{

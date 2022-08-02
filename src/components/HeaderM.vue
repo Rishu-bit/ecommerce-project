@@ -3,7 +3,7 @@
   <div class="header-component">
     <router-link to="/"><span class="logo">ElectroBay</span></router-link>
     <div class="header-nav">
-      <router-link to="/add" class="a-link">Add New Product</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <router-link to="/category" class="a-link">Add New Product</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <router-link to="/account" class="a-link">Account</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <!-- <router-link to="/mlogin" class="a-link">Merchant</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
       <!-- <router-link to="/cart" class="a-link">Order History</router-link>&nbsp;&nbsp;&nbsp; -->

@@ -157,22 +157,58 @@ Vue.use(VueAxios,axios)
                 let y;
                 this.productList=this.getProductList.filter((x) => {
                     for(y of val){
-                        if(y==="under500" && Number(x.price)<=500){
+                        if(y==="40-60" && Number(x.camera)>=40 && Number(x.camera)<=50){
                             return x;
                         }
-                        if(y==="500to1000" && Number(x.price)>=500 && Number(x.price)<=1000){
+                        if(y==="60-80" && Number(x.camera)>=60 && Number(x.camera)<=80){
                             return x;
                         }
-                        if(y==="1000to5000" && Number(x.price)>=1000 && Number(x.price)<=5000){
+                        if(y==="80-100" && Number(x.camera)>=80 && Number(x.camera)<=100){
                             return x;
                         }
-                        if(y==="over5000" && Number(x.price)>=5000){
+                        if(y==="100-120" && Number(x.camera)>=100 && Number(x.camera)<=120){
+                            return x;
+                        }
+                        if(y==="120-140" && Number(x.camera)>=120 && Number(x.camera)<=140){
+                            return x;
+                        }
+                        if(y==="120-140" && Number(x.camera)>=120 && Number(x.camera)<=140){
                             return x;
                         }
                         if(x.brand.toLowerCase().includes(y.toLowerCase())){
                             return x;
                         }
-                        if(x.category.toLowerCase().includes(y.toLowerCase())){
+                        if(y==="2" && Number(x.ram)===2){
+                            return x;
+                        }
+                        if(y==="3" && Number(x.ram)===3){
+                            return x;
+                        }
+                        if(y==="4" && Number(x.ram)===4){
+                            return x;
+                        }
+                        if(y==="6" && Number(x.ram)===6){
+                            return x;
+                        }
+                        if(y==="8" && Number(x.ram)===8){
+                            return x;
+                        }
+                        if(y==="over8" && Number(x.ram)>8){
+                            return x;
+                        }
+                        if(y==="under5000" && Number(x.price)<5000){
+                            return x;
+                        }
+                        if(y==="5000to10000" && Number(x.price)>=5000 &&  Number(x.price)<10000 ){
+                            return x;
+                        }
+                        if(y==="5000to10000" && Number(x.price)>=5000 &&  Number(x.price)<10000 ){
+                            return x;
+                        }
+                        if(y==="10000to50000" && Number(x.price)>=10000 &&  Number(x.price)<=50000 ){
+                            return x;
+                        }
+                        if(y==="over50000" && Number(x.price)>50000){
                             return x;
                         }
                         

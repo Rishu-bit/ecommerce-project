@@ -25,6 +25,14 @@ import BeforeLoginCartH from '@/components/BeforeLoginCartH'
 import ContactUs from '@/components/ContactUs'
 import FilterComponentBeforeLogin from '@/components/FilterComponentBeforeLogin'
 import UpdateAddNP from '@/components/UpdateAddNP'
+import Category from '@/components/Category'
+import EditCategory from '@/components/EditCategory'
+import MobileCategory from '@/components/MobileCategory'
+import LaptopCategory from '@/components/LaptopCategory'
+import TvCategory from '@/components/TvCategory'
+import WatchCategory from '@/components/WatchCategory'
+import HeadphoneCategory from '@/components/HeadphoneCategory'
+import About from '@/components/About'
 
 Vue.use(Router);
 export default new Router({
@@ -159,6 +167,51 @@ export default new Router({
       path: "/contact",
       name: "ContactUs",
       component: ContactUs
+    },
+    {
+      path: "/category",
+      name: "Category",
+      component: Category
+    },
+    {
+      path: "/mobcategory",
+      name: "MobileCategory",
+      component: MobileCategory
+    },
+    {
+      path: "/lapcategory",
+      name: "LaptopCategory",
+      component: LaptopCategory
+    },
+    {
+      path: "/telecategory",
+      name: "TvCategory",
+      component: TvCategory
+    },
+    {
+      path: "/watchcategory",
+      name: "WatchCategory",
+      component: WatchCategory
+    },
+    {
+      path: "/headphonecategory",
+      name: "HeadphoneCategory",
+      component: HeadphoneCategory
+    },
+    {
+      path: "/category",
+      name: "Category",
+      component: Category
+    },
+    {
+      path: "/edit1",
+      name: "EditCategory",
+      component: EditCategory
+    },
+    {
+      path: "/about",
+      name: "About",
+      component: About
     }
     // {
     //   path: '/products',

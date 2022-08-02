@@ -56,7 +56,7 @@ Vue.use(VueAxios,axios)
     },
     methods: {
         editdetails() {
-            this.$router.push('/edit')
+            this.$router.push('/edit1')
             window.location.reload()
         },
         // addToCartHandler(val) {

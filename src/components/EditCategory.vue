@@ -4,7 +4,7 @@
 
 <div class="addproduct">
             <br />
-            <h1>Add Product</h1><br>
+            <h1>Edit Product</h1><br>
             <div class="form">
                 <form method="POST" action="">
                     <label for="category" ><strong>Select Category:</strong></label><br />
